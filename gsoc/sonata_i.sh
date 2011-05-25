@@ -35,7 +35,7 @@ clear
 ####################################################################################
 #                            Checking for SonATA				   #
 ####################################################################################
-if 'ls ~/SonATA/.git'
+if [ -f $HOME'/SonATA/LICENSE.txt' ]
 then
 echo "SonATA successfully found"
 else
