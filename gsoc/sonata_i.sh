@@ -35,6 +35,8 @@
 cd /tmp
 exec > >(tee  ${0##*/}-$(date +"%b-%d-%y").log) ## Log the Script
 clear
+
+
 ####################################################################################
 #                            Checking for SonATA				   #
 ####################################################################################
@@ -61,15 +63,22 @@ read choice
     fi
 fi 
 sleep 3
+
+####################################################################################
+#               Installing the dependencies for SonATA				   #
+####################################################################################
+echo "Installing the dependencies for SonATA"
+sudo zypper install https://github.com/khrm/SonATA/blob/gsoc/gsoc/sonata-build-meta-1.0.alpha-1.noarch.rpm?raw=true
+sleep 3
+
 ####################################################################################
 #                Configuring the java                           		   #
 ####################################################################################
-
-
 echo "Configure the Java to use Sun Java version"
 sudo su -c 'update-alternatives --config javac'
 sudo su -c 'update-alternatives --config java'
 sleep 3
+
 ####################################################################################
 #                Downloading the extra libraries and data       		   #
 ####################################################################################
@@ -86,6 +95,7 @@ cd ~/sonata_install/data
 wget http://setiquest.org/sonata_files/vger-xpol-2010-07-14-406.pktdata.tar.Z
 tar -xvzf vger-xpol-2010-07-14-406.pktdata.tar.Z
 sleep 3
+
 ####################################################################################
 #                Preparing the files       		                           #
 ####################################################################################
@@ -93,6 +103,7 @@ echo "Preparing the files"
 sed 's@ACE_ROOT="$ACE_ROOT"@ACE_ROOT="'$HOME'/SonATA/packages/ACE_wrappers"@g'    ~/SonATA/sse-pkg/configure.in | grep ACE_ROOT=
 sed 's@lappend ::auto_path /usr/local/lib@lappend ::auto_path '$HOME'/sonata_install/lib@g' ~/SonATA/scripts/sserc.tcl | grep lappend
 sleep 3
+
 ####################################################################################
 #                Creating a ssh key and configuring it          		   #
 ####################################################################################
