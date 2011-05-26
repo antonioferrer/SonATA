@@ -38,7 +38,7 @@
 # --dxlibsonly : build only the dx libraries
 # --installdir <dir> :  configure <dir> as the installation directory
 
-echo "Checking whether the system fulfils minimum requirements"
+echo "Checking whether the system fulfils the minimum requirements"
 sleep 1    
 quo=`awk 'match($1,"MemTotal") == 1 {print $2}' /proc/meminfo`
 div=1048576
