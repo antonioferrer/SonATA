@@ -51,18 +51,16 @@ sleep 1
 echo " For more information visit http://setiquest.org/wiki/index.php/GitHub"
 echo "       and http://setiquest.org/content/sonata-download               "
 sleep 1
-echo "If you want to continue building by downloading the SonATA without Github fork/pull"
-echo "              type y or n to exit (default n)"
-read choice
-   if [ -z "$choice" -o "$choice" != "y" -o $choice ! = Y ]
-   then
-      echo "Aborting the build"
-      exit 1
-   elif [ $choice = y -o $choice = Y ]
-   then
-   cd $HOME
-   git clone git://github.com/setiQuest/SonATA.git
-   fi 
+echo "Do you want to continue building by downloading the SonATA without Github fork/pull (y/n)"
+   while true; do
+   read choice
+   case $choice in
+      [Nn]* ) echo  "Aborting the build"
+	      exit 1;;
+      [Yy]* ) echo  "Downloading the SonATA"
+              cd $HOME
+              git clone git://github.com/setiQuest/SonATA.git;;
+          * ) echo "Only y or n accepted";;   
 fi 
 sleep 3
 

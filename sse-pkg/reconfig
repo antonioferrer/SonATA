@@ -38,46 +38,6 @@
 # --dxlibsonly : build only the dx libraries
 # --installdir <dir> :  configure <dir> as the installation directory
 
-echo "Checking whether the system fulfils the minimum requirements"
-sleep 1    
-quo=`awk 'match($1,"MemTotal") == 1 {print $2}' /proc/meminfo`
-div=1048576
-ram=`echo "scale=2;$a/$div" | bc`
-if [ `echo "$ram < 3.8" | bc` -eq 1 ]
-then
-   echo "Insufficient ram to run the SonATA"
-   sleep 1
-   echo "But SonATA may be build though it will not run probably."
-   echo "Would you like to continue building it?(y/n)(default n)"
-   read choice 
-   if [ -z "$choice" -o "$choice" != "y" -o $choice ! = Y ]
-   then
-      echo "Aborting the build"
-      exit 1
-   elif [ $choice = y -o $choice = Y ]
-   then
-   echo "Continuing with the build"
-   fi
-fi
-
-cores_no=`cat /proc/cpuinfo | grep ^processor | wc -l`
-if [ $cores_no -lt 3 ]
-then
-   echo "SonATA requires 2 cores to run. You seem to have only one."
-   sleep 1
-   echo "But SonATA may be build though it will not run probably."
-   echo "Would you like to continue building it?(y/n)(default n)"
-   read choice 
-   if [ -z "$choice" -o "$choice" != "y" -o $choice ! = Y ]
-   then
-      echo "Aborting the build"
-      exit 1
-   elif [ $choice = y -o $choice = Y ]
-   then
-      echo "Continuing with the build"
-   fi  
-fi
-
 
 
 defaultInstallDir="${HOME}/sonata_install"
