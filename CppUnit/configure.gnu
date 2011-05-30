@@ -1,3 +1,3 @@
 #!/bin/sh
-./configure --disable-shared --enable-maintainer-mode $*
+./configure --disable-shared --enable-maintainer-mode
 

@@ -38,7 +38,7 @@ clear
 
 
 ####################################################################################
-#                            Checking for SonATA				   #
+#                            Checking for SonATA		                 #
 ####################################################################################
 if [ -f $HOME'/SonATA/LICENSE.txt' ]
 then
@@ -61,6 +61,8 @@ echo "Do you want to continue building by downloading the SonATA without Github 
               cd $HOME
               git clone git://github.com/setiQuest/SonATA.git;;
           * ) echo "Only y or n accepted";;   
+          esac
+          done
 fi 
 sleep 3
 
