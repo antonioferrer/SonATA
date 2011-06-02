@@ -67,14 +67,16 @@ fi
 sleep 3
 
 ####################################################################################
-#               Installing the dependencies for SonATA				   #
+#               Installing the dependencies for SonATA			      #
 ####################################################################################
 echo "Installing the dependencies for SonATA"
+sudo zypper ar http://download.opensuse.org/distribution/11.3/repo/non-oss non-oss
+sudo zypper ar http://download.opensuse.org/repositories/multimedia:/libs/openSUSE_11.3/ Multimedia_Libs
 sudo zypper install https://github.com/khrm/SonATA/blob/gsoc/gsoc/sonata-build-meta-1.0.alpha-1.noarch.rpm?raw=true
 sleep 3
 
 ####################################################################################
-#                Configuring the java                           		   #
+#                Configuring the java                           		      #
 ####################################################################################
 echo "Configure the Java to use Sun Java version"
 sudo su -c 'update-alternatives --config javac'
@@ -82,7 +84,7 @@ sudo su -c 'update-alternatives --config java'
 sleep 3
 
 ####################################################################################
-#                Downloading the extra libraries and data       		   #
+#                Downloading the extra libraries and data       		      #
 ####################################################################################
 echo "Downloading the extra libraries and data"
 
@@ -90,16 +92,21 @@ echo "Getting the ACE"
 cd ~/SonATA/scripts
 ./get_packages
 sleep 2
+if [ -f $HOME'/sonata_install/data/vger-xpol-2010-07-14-406.pktdata' ]
+then 
+echo "Voyager Data Found"
+else
 echo "Getting the Voyager data"
 mkdir ~/sonata_install
 mkdir ~/sonata_install/data
 cd ~/sonata_install/data
 wget http://setiquest.org/sonata_files/vger-xpol-2010-07-14-406.pktdata.tar.Z
 tar -xvzf vger-xpol-2010-07-14-406.pktdata.tar.Z
+fi
 sleep 3
 
 ####################################################################################
-#                Preparing the files       		                           #
+#                Preparing the files       		                            #
 ####################################################################################
 echo "Preparing the files"
 sed -i 's@ACE_ROOT="$ACE_ROOT"@ACE_ROOT="'$HOME'/SonATA/packages/ACE_wrappers"@g'    ~/SonATA/sse-pkg/configure.in
@@ -107,7 +114,7 @@ sed -i 's@lappend ::auto_path /usr/local/lib@lappend ::auto_path '$HOME'/sonata_
 sleep 3
 
 ####################################################################################
-#                Creating a ssh key and configuring it          		   #
+#                Creating a ssh key and configuring it          		      #
 ####################################################################################
 echo "Starting the ssh daemon"
 sudo /etc/init.d/sshd start
