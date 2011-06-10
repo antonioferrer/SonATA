@@ -32,8 +32,6 @@
 
 ## Process this file with automake to produce Makefile.in
 
-top_srcdir = ..
-top_builddir = ..
 
 AUTOMAKE_OPTIONS = foreign
 
@@ -49,7 +47,7 @@ EXTRA_DIST =
 
 BUILT_SOURCES =
 
-DFB_LIB_DIR = ../src
+DFB_LIB_DIR = $(top_builddir)/src
 DFB_LIB = $(DFB_LIB_DIR)/libDfb.a
 
 SIGPROC_DIR = $(top_srcdir)/..
@@ -63,7 +61,7 @@ LIB_DEPENDS = $(DFB_LIB)
 
 test_DEPENDENCIES = $(LIB_DEPENDS)
 
-DFBINCLUDE = ../include
+DFBINCLUDE = $(top_srcdir)/include
 
 INCLUDES= -I . -I$(DFBINCLUDE) -I$(PKT_INCDIR) \
 	-I$(top_srcdir)/include \
@@ -78,9 +76,8 @@ test_SOURCES = \
 
 DFB_LIBS = \
   -lpthread -lnsl \
-  ../src/libDfb.a \
+   $(top_builddir)/src/libDfb.a \
   -lfftw3f \
-  -L$(PKT_LIBDIR) \
-  -lSup
+   $(top_builddir)/../ATApackets/src/libSup.a
 
 LDADD = $(DFB_LIBS)

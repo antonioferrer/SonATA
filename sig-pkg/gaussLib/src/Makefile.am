@@ -32,8 +32,6 @@
 
 ## Process this file with automake to produce Makefile.in
 
-top_srcdir = ..
-top_builddir = ..
 
 AUTOMAKE_OPTIONS = foreign
 
@@ -62,7 +60,7 @@ TESTS =
 
 EXTRA_PROGRAMS =
 
-GAUSS_INCLUDE = ../include
+GAUSS_INCLUDE = $(top_srcdir)/include
 
 INCLUDES = -I$(GAUSS_INCLUDE) -I$(SONATA_INCDIR) -I$(SIGPROC_INCDIR) \
 		-I$(SSE_DX_INTERFACE_INCDIR)

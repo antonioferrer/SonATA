@@ -32,8 +32,6 @@
 
 ## Process this file with automake to produce Makefile.in
 
-top_srcdir = ..
-top_builddir = ..
 
 AUTOMAKE_OPTIONS = foreign
 
@@ -45,7 +43,7 @@ EXTRA_DIST =
 
 BUILT_SOURCES =
 
-PACKETRELAY_LIB_DIR = $(top_srcdir)/lib
+PACKETRELAY_LIB_DIR = $(top_builddir)/lib
 PACKETRELAY_LIB = $(PACKETRELAY_LIB_DIR)/libDx.a
 
 SIGPROC_DIR = $(top_srcdir)/../..
@@ -66,13 +64,13 @@ SSE_UTIL_LIB = $(SSE_UTIL_DIR)/libsseutil.a
 # the following are packet headers
 PKT_HDR_DIR = $(top_srcdir)/../../ATApackets
 PKT_HDR_INCDIR = $(PKT_HDR_DIR)/include
-PKT_HDR_LIBDIR = $(PKT_HDR_DIR)/src
+PKT_HDR_LIBDIR = $(top_builddir)/../../ATApackets/src
 PKT_LIB = $(PKT_HDR_LIBDIR)/libPkt.a
 
 # SonATA library directories
 SONATA_DIR = $(top_srcdir)/../../sonataLib
 SONATA_INCDIR = $(SONATA_DIR)/include
-SONATA_LIBDIR = $(SONATA_DIR)/src
+SONATA_LIBDIR = $(top_builddir)/../../sonataLib/src
 SONATA_LIB = $(SONATA_LIBDIR)/libSonata.a
 
 LIB_DEPENDS = $(PKT_LIB) $(SONATA_LIB)

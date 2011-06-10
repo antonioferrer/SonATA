@@ -32,9 +32,6 @@
 
 ## Process this file with automake to produce Makefile.in
 
-top_srcdir = ..
-top_builddir = ..
-
 AUTOMAKE_OPTIONS = foreign
 
 lib_LIBRARIES =	libSpectra.a
@@ -62,7 +59,7 @@ TESTS =
 
 EXTRA_PROGRAMS =
 
-SPECTRA_INCLUDE = ../include
+SPECTRA_INCLUDE = $(top_srcdir)/include
 
 INCLUDES = -I$(SPECTRA_INCLUDE) -I$(SIGPROC_INCDIR) -I$(SSE_INCDIR)
 LIBLIST = -L.

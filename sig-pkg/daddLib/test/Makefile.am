@@ -32,8 +32,6 @@
 
 ## Process this file with automake to produce Makefile.in
 
-top_srcdir = ..
-top_builddir = ..
 
 AUTOMAKE_OPTIONS = foreign
 
@@ -49,14 +47,14 @@ EXTRA_DIST =
 
 BUILT_SOURCES =
 
-DADD_LIBDIR = ../src
+DADD_LIBDIR = $(top_builddir)/src
 DADD_LIB = $(DADD_LIBDIR)/libDadd.a
 
 LIB_DEPENDS = $(DADD_LIB)
 
 test_DEPENDENCIES = $(LIB_DEPENDS)
 
-DADDINCLUDE = ../include
+DADDINCLUDE = $(top_srcdir)/include
 
 SIGPROC_DIR = $(top_srcdir)/..
 SIGPROC_INCDIR = $(SIGPROC_DIR)/include

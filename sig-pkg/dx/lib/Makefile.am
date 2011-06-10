@@ -32,9 +32,6 @@
 
 ## Process this file with automake to produce Makefile.in
 
-top_srcdir = ..
-top_builddir = ..
-
 AUTOMAKE_OPTIONS = foreign
 
 noinst_LIBRARIES =	libDx.a
@@ -119,6 +116,6 @@ INCLUDES = -I$(DX_INCDIR) -I$(SONATA_INCDIR) -I$(PKT_HDR_INCDIR) \
 		-I$(DFB_INCDIR) -I$(SPECTRA_INCDIR) -I$(DADD_INCDIR)\
 		-I$(SIGPROC_INCDIR) -I$(SSE_INCDIR) -I$(SSE_DX_INTERFACE_INCDIR) \
 		-I$(SSE_INTERFACE_INCDIR)
-LIBLIST = -L.
+LIBLIST = -L$(srcdir)
 
 LDADD = $(LIBLIST)

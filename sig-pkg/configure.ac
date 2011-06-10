@@ -28,10 +28,11 @@
 #
 ################################################################################
 
-AC_INIT(./Makefile.am)
-AM_CONFIG_HEADER(config.h)
+AC_INIT
+AC_CONFIG_SRCDIR([./Makefile.am])
+AC_CONFIG_HEADERS([config.h])
 AC_PREFIX_DEFAULT(${HOME}/sonata_install)
-#AC_PREREQ(2.10)dnl               dnl Minimum Autoconf version required.
+#AC_PREREQ([2.68])dnl               dnl Minimum Autoconf version required.
 AC_ARG_PROGRAM
 AM_MAINTAINER_MODE
 AM_INIT_AUTOMAKE(SonATA, 0.1)
@@ -80,9 +81,12 @@ dnl checks for endian-ness
 AC_C_BIGENDIAN
 
 dnl initialize libtool
-AC_LIBTOOL_DLOPEN
+_LT_SET_OPTION([LT_INIT],[dlopen])
+AC_DIAGNOSE([obsolete],[AC_LIBTOOL_DLOPEN: Remove this warning and the call to _LT_SET_OPTION when you
+put the `dlopen' option into LT_INIT's first parameter.])
+
 AC_DISABLE_SHARED
-AC_PROG_LIBTOOL
+LT_INIT
 AC_SUBST(LIBTOOL_DEPS)
 AC_CONFIG_SUBDIRS([ATApackets
 	        daddLib
@@ -93,5 +97,6 @@ AC_CONFIG_SUBDIRS([ATApackets
 	        channelizer
 	        dx
 	        utilities])
-AC_OUTPUT(Makefile
- 	filters/Makefile)
+AC_CONFIG_FILES([Makefile
+ 	filters/Makefile])
+AC_OUTPUT

@@ -32,9 +32,6 @@
 
 ## Process this file with automake to produce Makefile.in
 
-top_srcdir = ..
-top_builddir = ..
-
 AUTOMAKE_OPTIONS = foreign
 
 bin_PROGRAMS = dx
@@ -46,7 +43,7 @@ EXTRA_DIST =
 BUILT_SOURCES =
 
 DX_INCDIR = $(top_srcdir)/include
-DX_LIBDIR = $(top_srcdir)/lib
+DX_LIBDIR = $(top_builddir)/lib
 DX_LIB = $(DX_LIBDIR)/libDx.a
 
 SIGPROC_DIR = $(top_srcdir)/..
@@ -55,7 +52,7 @@ SIGPROC_INCDIR = $(SIGPROC_DIR)/include
 # SonATA library directories
 SONATA_DIR = $(top_srcdir)/../sonataLib
 SONATA_INCDIR = $(SONATA_DIR)/include
-SONATA_LIBDIR = $(SONATA_DIR)/src
+SONATA_LIBDIR = $(top_builddir)/../sonataLib/src
 SONATA_LIB = $(SONATA_LIBDIR)/libSonata.a
 
 SSE_INCDIR = $(top_srcdir)/../../sse-pkg/include
@@ -75,24 +72,24 @@ SSE_UTIL_LIB = $(SSE_UTIL_DIR)/libsseutil.a
 # DFB library directories
 DFB_DIR = $(top_srcdir)/../dfbLib
 DFB_INCDIR = $(DFB_DIR)/include
-DFB_LIBDIR = $(DFB_DIR)/src
+DFB_LIBDIR = $(top_builddir)/../dfbLib/src
 DFB_LIB = $(DFB_LIBDIR)/libDfb.a
 
 # the following are packet headers
 PKT_DIR = $(top_srcdir)/../ATApackets
 PKT_INCDIR = $(PKT_DIR)/include
-PKT_LIBDIR = $(PKT_DIR)/src
+PKT_LIBDIR = $(top_builddir)/../ATApackets/src
 
 # spectra library
 SPECTRA_DIR = $(top_srcdir)/../spectraLib
 SPECTRA_INCDIR = $(SPECTRA_DIR)/include
-SPECTRA_LIBDIR = $(SPECTRA_DIR)/src
+SPECTRA_LIBDIR = $(top_builddir)/../spectraLib/src
 SPECTRA_LIB = $(SPECTRA_LIBDIR)/libSpectra.a
 
 # DADD library
 DADD_DIR = $(top_srcdir)/../daddLib
 DADD_INCDIR = $(DADD_DIR)/include
-DADD_LIBDIR = $(DADD_DIR)/src
+DADD_LIBDIR = $(top_builddir)/../daddLib/src
 DADD_LIB = $(DADD_LIBDIR)/libDadd.a
 
 LIB_DEPENDS = $(DX_LIB) $(SONATA_LIB) $(SPECTRA_LIB) $(DADD_LIB) \

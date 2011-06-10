@@ -32,8 +32,6 @@
 
 ## Process this file with automake to produce Makefile.in
 
-top_srcdir = ..
-top_builddir = ..
 
 AUTOMAKE_OPTIONS = foreign
 
@@ -54,14 +52,14 @@ SIGPROC_INCDIR = $(SIGPROC_DIR)/include
 
 SONATA_DIR = $(top_srcdir)/../sonataLib
 SONATA_INCDIR = $(SONATA_DIR)/include
-SONATA_LIBDIR = $(SONATA_DIR)/src
+SONATA_LIBDIR =$(top_builddir)/../sonataLib/src
 SONATA_LIB = $(SONATA_LIBDIR)/libSonata.a
 
 SSE_DX_INTERFACE_INCDIR = $(top_srcdir)/../../sse-pkg/include
-SSE_DX_INTERFACE_LIBDIR = $(top_srcdir)/../../sse-pkg/sseDxInterfaceLib
+SSE_DX_INTERFACE_LIBDIR = $(top_builddir)/../../sse-pkg/sseDxInterfaceLib
 SSE_DX_INTERFACE_LIB = $(SSE_DX_INTERFACE_LIBDIR)/libsseDxInterface.a
 
-SSE_INTERFACE_LIBDIR = $(top_srcdir)/../../sse-pkg/sseInterfaceLib
+SSE_INTERFACE_LIBDIR = $(top_builddir)/../../sse-pkg/sseInterfaceLib
 SSE_INTERFACE_LIB = $(SSE_INTERFACE_LIBDIR)/libsseInterface.a
 
 GAUSS_LIBDIR = ../src
@@ -71,7 +69,7 @@ LIB_DEPENDS = $(GAUSS_LIB)
 
 test_DEPENDENCIES = $(LIB_DEPENDS)
 
-GAUSS_INCLUDE = ../include
+GAUSS_INCLUDE = $(top_srcdir)/include
 
 INCLUDES= -I. -I$(GAUSS_INCLUDE) -I$(SONATA_INCDIR) -I$(SIGPROC_INCDIR) \
 		-I$(SSE_DX_INTERFACE_INCDIR)

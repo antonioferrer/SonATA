@@ -32,9 +32,6 @@
 
 ## Process this file with automake to produce Makefile.in
 
-top_srcdir = ..
-top_builddir = ..
-
 AUTOMAKE_OPTIONS = foreign
 
 bin_PROGRAMS = channelizer
@@ -65,19 +62,19 @@ SSE_UTIL_LIB = $(SSE_UTIL_DIR)/libsseutil.a
 # DFB library directories
 DFB_DIR = $(top_srcdir)/../dfbLib
 DFB_INCDIR = $(DFB_DIR)/include
-DFB_LIBDIR = $(DFB_DIR)/src
+DFB_LIBDIR = $(top_builddir)/../dfbLib/src
 DFB_LIB = $(DFB_LIBDIR)/libDfb.a
 
 # the following are packet headers
 PKT_HDR_DIR = $(top_srcdir)/../ATApackets
 PKT_HDR_INCDIR = $(PKT_HDR_DIR)/include
-PKT_HDR_LIBDIR = $(PKT_HDR_DIR)/src
+PKT_HDR_LIBDIR =  $(top_builddir)/../ATApackets/src
 PKT_LIB = $(PKT_HDR_LIBDIR)/libPkt.a
 
 # SonATA library directories
 SONATA_DIR = $(top_srcdir)/../sonataLib
 SONATA_INCDIR = $(SONATA_DIR)/include
-SONATA_LIBDIR = $(SONATA_DIR)/src
+SONATA_LIBDIR = $(top_builddir)/../sonataLib/src
 SONATA_LIB = $(SONATA_LIBDIR)/libSonata.a
 
 LIB_DEPENDS = $(SSE_INTERFACE_LIB) $(SSE_CHAN_INTERFACE_LIB) \

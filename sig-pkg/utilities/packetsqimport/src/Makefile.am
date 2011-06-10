@@ -32,8 +32,6 @@
 
 ## Process this file with automake to produce Makefile.in
 
-top_srcdir = ..
-top_builddir = ..
 
 AUTOMAKE_OPTIONS = foreign
 
@@ -45,7 +43,7 @@ EXTRA_DIST =
 
 BUILT_SOURCES =
 
-PACKETSQIMPORT_LIB_DIR = $(top_srcdir)/lib
+PACKETSQIMPORT_LIB_DIR = $(top_builddir)/lib
 PACKETSQIMPORT_LIB = $(PACKETSQIMPORT_LIB_DIR)/libDx.a
 
 SIGPROC_DIR = $(top_srcdir)/../..
@@ -62,7 +60,7 @@ SSE_DX_INTERFACE_INCDIR = $(top_srcdir)/../../../sse-pkg/sseDxInterfaceLib
 # the following are packet headers
 PKT_HDR_DIR = $(top_srcdir)/../../ATApackets
 PKT_HDR_INCDIR = $(PKT_HDR_DIR)/include
-PKT_HDR_LIBDIR = $(PKT_HDR_DIR)/src
+PKT_HDR_LIBDIR = $(top_builddir)/../../ATApackets/src
 PKT_LIB = $(PKT_HDR_LIBDIR)/libPkt.a
 
 LIB_DEPENDS = $(PKT_LIB)

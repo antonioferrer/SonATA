@@ -32,9 +32,6 @@
 
 ## Process this file with automake to produce Makefile.in
 
-top_srcdir = ..
-top_builddir = ..
-
 AUTOMAKE_OPTIONS = foreign
 
 noinst_PROGRAMS = test
@@ -52,14 +49,14 @@ BUILT_SOURCES =
 SIGPROC_DIR = $(top_srcdir)/..
 SIGPROC_INCDIR = $(SIGPROC_DIR)/include
 
-SPECTRA_LIB_DIR = ../src
+SPECTRA_LIB_DIR =  $(top_builddir)/src
 SPECTRA_LIB = $(SPECTRA_LIB_DIR)/libSpectra.a
 
 SSE_INCDIR = $(top_srcdir)/../../sse-pkg/include
 
 PKT_DIR = $(top_srcdir)/../ATApackets
 PKT_INCDIR = $(PKT_DIR)/include
-PKT_LIBDIR = $(PKT_DIR)/src
+PKT_LIBDIR = $(top_builddir)/../ATApackets/src
 
 LIB_DEPENDS = $(SPECTRA_LIB)
 
