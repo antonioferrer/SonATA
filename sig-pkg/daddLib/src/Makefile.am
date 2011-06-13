@@ -45,7 +45,11 @@ SIGPROC_INCDIR = $(SIGPROC_DIR)/include
 SSE_DIR = $(srcdir)/../../../sse-pkg
 SSE_INCDIR = $(SSE_DIR)/include
 
+<<<<<<< HEAD
 SSE_INTERFACE_DIR = $(srcdir)/../../../sse-pkg/sseInterfaceLib
+=======
+SSE_INTERFACE_DIR = $(top_srcdir)/../../sse-pkg/sseInterfaceLib
+>>>>>>> origin/gsoc
 SSE_INTERFACE_INCDIR = $(SSE_INTERFACE_DIR)
 
 libDadd_a_SOURCES = \
@@ -63,7 +67,11 @@ TESTS =
 
 EXTRA_PROGRAMS =
 
+<<<<<<< HEAD
 DADD_INCLUDE = $(srcdir)/../include
+=======
+DADD_INCLUDE = $(top_srcdir)/include
+>>>>>>> origin/gsoc
 
 INCLUDES = -I$(DADD_INCLUDE) -I$(SIGPROC_INCDIR) \
 		-I$(SSE_INCDIR) -I$(SSE_INTERFACE_INCDIR)

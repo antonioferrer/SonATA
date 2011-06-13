@@ -49,14 +49,22 @@ BUILT_SOURCES =
 SIGPROC_DIR = $(srcdir)/../..
 SIGPROC_INCDIR = $(SIGPROC_DIR)/include
 
+<<<<<<< HEAD
 SPECTRA_LIB_DIR =  $(builddir)/../src
+=======
+SPECTRA_LIB_DIR =  $(top_builddir)/src
+>>>>>>> origin/gsoc
 SPECTRA_LIB = $(SPECTRA_LIB_DIR)/libSpectra.a
 
 SSE_INCDIR = $(srcdir)/../../../sse-pkg/include
 
 PKT_DIR = $(srcdir)/../../ATApackets
 PKT_INCDIR = $(PKT_DIR)/include
+<<<<<<< HEAD
 PKT_LIBDIR = $(builddir)/../../ATApackets/src
+=======
+PKT_LIBDIR = $(top_builddir)/../ATApackets/src
+>>>>>>> origin/gsoc
 
 LIB_DEPENDS = $(SPECTRA_LIB)
 

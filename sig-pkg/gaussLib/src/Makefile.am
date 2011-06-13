@@ -60,7 +60,11 @@ TESTS =
 
 EXTRA_PROGRAMS =
 
+<<<<<<< HEAD
 GAUSS_INCLUDE = $(srcdir)/../include
+=======
+GAUSS_INCLUDE = $(top_srcdir)/include
+>>>>>>> origin/gsoc
 
 INCLUDES = -I$(GAUSS_INCLUDE) -I$(SONATA_INCDIR) -I$(SIGPROC_INCDIR) \
 		-I$(SSE_DX_INTERFACE_INCDIR)

@@ -61,19 +61,31 @@ SSE_DX_INTERFACE_LIB = $(SSE_DX_INTERFACE_LIBDIR)/libsseDxInterface.a
 # the following are packet headers
 PKT_HDR_DIR = $(srcdir)/../../../ATApackets
 PKT_HDR_INCDIR = $(PKT_HDR_DIR)/include
+<<<<<<< HEAD
 PKT_HDR_LIBDIR = $(builddir)/../../../ATApackets/src
+=======
+PKT_HDR_LIBDIR = $(top_builddir)/../../ATApackets/src
+>>>>>>> origin/gsoc
 PKT_LIB = $(PKT_HDR_LIBDIR)/libPkt.a
 
 # SonATA library directories
 SONATA_DIR = $(srcdir)/../../../sonataLib
 SONATA_INCDIR = $(SONATA_DIR)/include
+<<<<<<< HEAD
 SONATA_LIBDIR = $(builddir)/../../../sonataLib/src
+=======
+SONATA_LIBDIR = $(top_builddir)/../../sonataLib/src
+>>>>>>> origin/gsoc
 SONATA_LIB = $(SONATA_LIBDIR)/libSonata.a
 
 # Gaussian library directories
 GAUSS_DIR = $(srcdir)/../../../gaussLib
 GAUSS_INCDIR = $(GAUSS_DIR)/include
+<<<<<<< HEAD
 GAUSS_LIBDIR = $(builddir)/../../../gaussLib/src
+=======
+GAUSS_LIBDIR = $(top_builddir)/../../gaussLib/src
+>>>>>>> origin/gsoc
 GAUSS_LIB = $(GAUSS_LIBDIR)/libGauss.a
 
 LIB_DEPENDS = $(PKT_LIB) $(SONATA_LIB) $(GAUSS_LIB) \

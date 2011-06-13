@@ -43,7 +43,11 @@ EXTRA_DIST =
 
 BUILT_SOURCES =
 
+<<<<<<< HEAD
 PACKETSQIMPORT_LIB_DIR = $(builddir)/../lib
+=======
+PACKETSQIMPORT_LIB_DIR = $(top_builddir)/lib
+>>>>>>> origin/gsoc
 PACKETSQIMPORT_LIB = $(PACKETSQIMPORT_LIB_DIR)/libDx.a
 
 SIGPROC_DIR = $(srcdir)/../../..
@@ -60,7 +64,11 @@ SSE_DX_INTERFACE_INCDIR = $(srcdir)/../../../../sse-pkg/sseDxInterfaceLib
 # the following are packet headers
 PKT_HDR_DIR = $(srcdir)/../../../ATApackets
 PKT_HDR_INCDIR = $(PKT_HDR_DIR)/include
+<<<<<<< HEAD
 PKT_HDR_LIBDIR = $(builddir)/../../../ATApackets/src
+=======
+PKT_HDR_LIBDIR = $(top_builddir)/../../ATApackets/src
+>>>>>>> origin/gsoc
 PKT_LIB = $(PKT_HDR_LIBDIR)/libPkt.a
 
 LIB_DEPENDS = $(PKT_LIB)

@@ -28,7 +28,11 @@
 #
 ################################################################################
 
+<<<<<<< HEAD
 AC_INIT(SonATA-sig-pkg, 0.1)
+=======
+AC_INIT
+>>>>>>> origin/gsoc
 AC_CONFIG_SRCDIR([./Makefile.am])
 AC_CONFIG_HEADERS([config.h])
 AC_PREFIX_DEFAULT(${HOME}/sonata_install)
@@ -100,6 +104,7 @@ AS_IF([test "x$deepnesting" = xyes],
 	        spectraLib
 	        channelizer
 	        dx
+<<<<<<< HEAD
 	        utilities])],
 	[AC_CONFIG_FILES([ATApackets/Makefile
 	ATApackets/include/Makefile
@@ -150,6 +155,9 @@ AS_IF([test "x$deepnesting" = xyes],
            utilities/packetsqimport/Makefile
 	utilities/packetsqimport/src/Makefile
 	])])
+=======
+	        utilities])
+>>>>>>> origin/gsoc
 AC_CONFIG_FILES([Makefile
  	filters/Makefile])
 AC_OUTPUT

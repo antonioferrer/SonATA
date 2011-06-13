@@ -59,7 +59,11 @@ TESTS =
 
 EXTRA_PROGRAMS =
 
+<<<<<<< HEAD
 SPECTRA_INCLUDE = $(srcdir)/../include
+=======
+SPECTRA_INCLUDE = $(top_srcdir)/include
+>>>>>>> origin/gsoc
 
 INCLUDES = -I$(SPECTRA_INCLUDE) -I$(SIGPROC_INCDIR) -I$(SSE_INCDIR)
 LIBLIST = -L.

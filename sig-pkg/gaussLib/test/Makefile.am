@@ -52,6 +52,7 @@ SIGPROC_INCDIR = $(SIGPROC_DIR)/include
 
 SONATA_DIR = $(srcdir)/../../sonataLib
 SONATA_INCDIR = $(SONATA_DIR)/include
+<<<<<<< HEAD
 SONATA_LIBDIR =$(builddir)/../../sonataLib/src
 SONATA_LIB = $(SONATA_LIBDIR)/libSonata.a
 
@@ -60,6 +61,16 @@ SSE_DX_INTERFACE_LIBDIR = $(builddir)/../../../sse-pkg/sseDxInterfaceLib
 SSE_DX_INTERFACE_LIB = $(SSE_DX_INTERFACE_LIBDIR)/libsseDxInterface.a
 
 SSE_INTERFACE_LIBDIR = $(builddir)/../../../sse-pkg/sseInterfaceLib
+=======
+SONATA_LIBDIR =$(top_builddir)/../sonataLib/src
+SONATA_LIB = $(SONATA_LIBDIR)/libSonata.a
+
+SSE_DX_INTERFACE_INCDIR = $(top_srcdir)/../../sse-pkg/include
+SSE_DX_INTERFACE_LIBDIR = $(top_builddir)/../../sse-pkg/sseDxInterfaceLib
+SSE_DX_INTERFACE_LIB = $(SSE_DX_INTERFACE_LIBDIR)/libsseDxInterface.a
+
+SSE_INTERFACE_LIBDIR = $(top_builddir)/../../sse-pkg/sseInterfaceLib
+>>>>>>> origin/gsoc
 SSE_INTERFACE_LIB = $(SSE_INTERFACE_LIBDIR)/libsseInterface.a
 
 GAUSS_LIBDIR = ../src
@@ -69,7 +80,11 @@ LIB_DEPENDS = $(GAUSS_LIB)
 
 test_DEPENDENCIES = $(LIB_DEPENDS)
 
+<<<<<<< HEAD
 GAUSS_INCLUDE = $(srcdir)/../include
+=======
+GAUSS_INCLUDE = $(top_srcdir)/include
+>>>>>>> origin/gsoc
 
 INCLUDES= -I. -I$(GAUSS_INCLUDE) -I$(SONATA_INCDIR) -I$(SIGPROC_INCDIR) \
 		-I$(SSE_DX_INTERFACE_INCDIR)

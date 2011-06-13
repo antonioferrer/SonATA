@@ -43,7 +43,11 @@ EXTRA_DIST =
 
 BUILT_SOURCES =
 
+<<<<<<< HEAD
 PACKETRELAY_LIB_DIR = $(builddir)/../lib
+=======
+PACKETRELAY_LIB_DIR = $(top_builddir)/lib
+>>>>>>> origin/gsoc
 PACKETRELAY_LIB = $(PACKETRELAY_LIB_DIR)/libDx.a
 
 SIGPROC_DIR = $(srcdir)/../../..
@@ -64,13 +68,21 @@ SSE_UTIL_LIB = $(SSE_UTIL_DIR)/libsseutil.a
 # the following are packet headers
 PKT_HDR_DIR = $(srcdir)/../../../ATApackets
 PKT_HDR_INCDIR = $(PKT_HDR_DIR)/include
+<<<<<<< HEAD
 PKT_HDR_LIBDIR = $(builddir)/../../../ATApackets/src
+=======
+PKT_HDR_LIBDIR = $(top_builddir)/../../ATApackets/src
+>>>>>>> origin/gsoc
 PKT_LIB = $(PKT_HDR_LIBDIR)/libPkt.a
 
 # SonATA library directories
 SONATA_DIR = $(srcdir)/../../../sonataLib
 SONATA_INCDIR = $(SONATA_DIR)/include
+<<<<<<< HEAD
 SONATA_LIBDIR = $(builddir)/../../../sonataLib/src
+=======
+SONATA_LIBDIR = $(top_builddir)/../../sonataLib/src
+>>>>>>> origin/gsoc
 SONATA_LIB = $(SONATA_LIBDIR)/libSonata.a
 
 LIB_DEPENDS = $(PKT_LIB) $(SONATA_LIB)

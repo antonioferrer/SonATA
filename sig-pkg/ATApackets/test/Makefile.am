@@ -48,6 +48,7 @@ EXTRA_DIST =
 
 BUILT_SOURCES =
 
+<<<<<<< HEAD
 PKT_DIR = $(builddir)/../src
 PKT_INCDIR = $(builddir)/../include
 PKT_LIBDIR = $(PKT_DIR)
@@ -55,6 +56,15 @@ PKT_LIB = $(PKT_LIBDIR)/libPkt.a
 
 SUP_DIR = $(builddir)/../src
 SUP_INCDIR = $(builddir)/../include
+=======
+PKT_DIR = $(top_builddir)/src
+PKT_INCDIR = $(top_builddir)/include
+PKT_LIBDIR = $(PKT_DIR)
+PKT_LIB = $(PKT_LIBDIR)/libPkt.a
+
+SUP_DIR = $(top_builddir)/src
+SUP_INCDIR = $(top_builddir)/include
+>>>>>>> origin/gsoc
 SUP_LIBDIR = $(SUP_DIR)
 SUP_LIB = $(SUP_LIBDIR)/libSup.a
 
