@@ -32,8 +32,6 @@
 
 ## Process this file with automake to produce Makefile.in
 
-top_srcdir = ..
-top_builddir = ..
 
 AUTOMAKE_OPTIONS = foreign
 
@@ -41,23 +39,23 @@ noinst_LIBRARIES =	libSonata.a
 
 PUBLIC_HEADER_FILES =
 
-SIGPROC_DIR = $(top_srcdir)/..
+SIGPROC_DIR = $(srcdir)/../..
 SIGPROC_INCDIR = $(SIGPROC_DIR)/include
 
-SSE_INCDIR = $(top_srcdir)/../../sse-pkg/include
+SSE_INCDIR = $(srcdir)/../../../sse-pkg/include
 
-SSE_INTERFACE_DIR = $(top_builddir)/../../sse-pkg/sseInterfaceLib
-SSE_INTERFACE_INCDIR = $(top_srcdir)/../../sse-pkg/sseInterfaceLib
+SSE_INTERFACE_DIR = $(builddir)/../../../sse-pkg/sseInterfaceLib
+SSE_INTERFACE_INCDIR = $(srcdir)/../../../sse-pkg/sseInterfaceLib
 
-SSE_DX_INTERFACE_DIR = $(top_builddir)/../../sse-pkg/sseDxInterfaceLib
-SSE_DX_INTERFACE_INCDIR = $(top_srcdir)/../../sse-pkg/sseDxInterfaceLib
+SSE_DX_INTERFACE_DIR = $(builddir)/../../../sse-pkg/sseDxInterfaceLib
+SSE_DX_INTERFACE_INCDIR = $(srcdir)/../../../sse-pkg/sseDxInterfaceLib
 
 # the following are packet headers
-PKT_HDR_DIR = $(top_srcdir)/../ATApackets
+PKT_HDR_DIR = $(srcdir)/../../ATApackets
 PKT_HDR_INCDIR = $(PKT_HDR_DIR)/include
 
 # SonATA library directories
-SONATA_DIR = $(top_srcdir)/../sonataLib
+SONATA_DIR = $(srcdir)/../../sonataLib
 SONATA_INCDIR = $(SONATA_DIR)/include
 
 libSonata_a_SOURCES = \
@@ -97,7 +95,7 @@ TESTS =
 
 EXTRA_PROGRAMS =
 
-SONATA_INCLUDE = $(top_srcdir)/include
+SONATA_INCLUDE = $(srcdir)/../include
 CCPUNIT_ROOT = /usr/local/CppUnit
 
 INCLUDES = -I$(SONATA_INCDIR) -I$(PKT_HDR_INCDIR) -I$(SIGPROC_INCDIR) \

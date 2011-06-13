@@ -28,16 +28,19 @@
 #
 ################################################################################
 
-AC_INIT(utilities, 0.1)
-AM_CONFIG_HEADER(config.h)
-#AC_PREFIX_DEFAULT($HOME/dx_install)
-#AC_PREREQ(2.10)dnl               dnl Minimum Autoconf version required.
+#AC_INIT
+AC_CONFIG_SRCDIR([include/PacketSend.h])
+AC_INIT([packetsqimport],[1.0])
+AC_CONFIG_HEADERS([config.h])
+#AC_PREREQ([2.68])dnl               dnl Minimum Autoconf version required.
 AC_ARG_PROGRAM
 AM_MAINTAINER_MODE
+AC_CONFIG_SRCDIR([src/packetsqimport.cpp])
 AM_INIT_AUTOMAKE([foreign])
+#AM_INIT_AUTOMAKE(packetsend, 0.1)
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES])
 AC_SUBST(CXXFLAGS,"-Wall -Woverloaded-virtual -D_REENTRANT $(DEBUGFLAGS) \
-	-march=native -msse3 -pthread -fno-strict-aliasing")
+	-march=native -msse3 -fno-strict-aliasing")
 
 # add an option to build debug version
 AC_ARG_ENABLE(debug,
@@ -80,15 +83,19 @@ dnl checks for endian-ness
 AC_C_BIGENDIAN
 
 dnl initialize libtool
-AC_LIBTOOL_DLOPEN
+_LT_SET_OPTION([LT_INIT],[dlopen])
+AC_DIAGNOSE([obsolete],[AC_LIBTOOL_DLOPEN: Remove this warning and the call to _LT_SET_OPTION when you
+put the `dlopen' option into LT_INIT's first parameter.])
+
 AC_DISABLE_SHARED
-AC_PROG_LIBTOOL
+LT_INIT
 AC_SUBST(LIBTOOL_DEPS)
-AC_CONFIG_FILES([Makefile])
-AC_CONFIG_SUBDIRS([packetgen
-	        packetrelay
-	        packetsend
-                   packetread
-	        packetchan2beam
-                   packetsqimport])
+dnl original_LIBS=$LIBS
+dnl LIBS="-L/opt/intel/mkl/lib/32/ $LIBS -lguide"
+dnl AC_CHECK_LIB(mkl_p4, cfft1d_)
+dnl AC_CHECK_LIB(mkl_p4, cfft1d_, original_LIBS=$LIBS)
+dnl LIBS=$original_LIBS
+AC_CONFIG_FILES([Makefile
+	  src/Makefile
+	])
 AC_OUTPUT

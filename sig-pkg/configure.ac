@@ -1,6 +1,6 @@
 ################################################################################
 #
-# File:    configure.in
+# File:    configure.ac
 # Project: OpenSonATA
 # Authors: The OpenSonATA code is the result of many programmers
 #          over many years
@@ -28,14 +28,15 @@
 #
 ################################################################################
 
-AC_INIT(./Makefile.am)
-AM_CONFIG_HEADER(config.h)
+AC_INIT(SonATA-sig-pkg, 0.1)
+AC_CONFIG_SRCDIR([./Makefile.am])
+AC_CONFIG_HEADERS([config.h])
 AC_PREFIX_DEFAULT(${HOME}/sonata_install)
-#AC_PREREQ(2.10)dnl               dnl Minimum Autoconf version required.
+#AC_PREREQ([2.68])dnl               dnl Minimum Autoconf version required.
 AC_ARG_PROGRAM
 AM_MAINTAINER_MODE
-AM_INIT_AUTOMAKE(SonATA, 0.1)
-
+AM_INIT_AUTOMAKE([foreign])
+m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES])
 AC_SUBST(CXXFLAGS,"-Wall -Woverloaded-virtual -D_REENTRANT $(DEBUGFLAGS) \
 	-march=native -msse3 -pthread -fno-strict-aliasing")
 
@@ -80,11 +81,18 @@ dnl checks for endian-ness
 AC_C_BIGENDIAN
 
 dnl initialize libtool
-AC_LIBTOOL_DLOPEN
+_LT_SET_OPTION([LT_INIT],[dlopen])
+AC_DIAGNOSE([obsolete],[AC_LIBTOOL_DLOPEN: Remove this warning and the call to _LT_SET_OPTION when you
+put the `dlopen' option into LT_INIT's first parameter.])
+
 AC_DISABLE_SHARED
-AC_PROG_LIBTOOL
+LT_INIT
 AC_SUBST(LIBTOOL_DEPS)
-AC_CONFIG_SUBDIRS([ATApackets
+AC_ARG_ENABLE(deepnesting,
+[	--enable-deepnesting,		run the configure script for subpackages],
+deepnesting=$enableval, [deepnesting="no"])
+AS_IF([test "x$deepnesting" = xyes],
+	[AC_CONFIG_SUBDIRS([ATApackets
 	        daddLib
 	        dfbLib
 	        gaussLib
@@ -92,6 +100,56 @@ AC_CONFIG_SUBDIRS([ATApackets
 	        spectraLib
 	        channelizer
 	        dx
-	        utilities])
-AC_OUTPUT(Makefile
- 	filters/Makefile)
+	        utilities])],
+	[AC_CONFIG_FILES([ATApackets/Makefile
+	ATApackets/include/Makefile
+	ATApackets/src/Makefile
+	ATApackets/test/Makefile
+	daddLib/Makefile
+	daddLib/include/Makefile
+	daddLib/src/Makefile
+	daddLib/test/Makefile
+	dfbLib/Makefile
+	dfbLib/include/Makefile
+	dfbLib/src/Makefile
+	dfbLib/test/Makefile
+	gaussLib/Makefile
+	gaussLib/include/Makefile
+	gaussLib/src/Makefile
+	gaussLib/test/Makefile
+	sonataLib/Makefile
+	sonataLib/include/Makefile
+	sonataLib/src/Makefile
+	spectraLib/Makefile
+	spectraLib/include/Makefile
+	spectraLib/src/Makefile
+	spectraLib/test/Makefile
+	channelizer/Makefile
+	channelizer/include/Makefile
+	channelizer/src/Makefile
+	dx/Makefile
+	dx/include/Makefile
+	dx/lib/Makefile
+	dx/src/Makefile
+	dx/test/Makefile
+	utilities/Makefile
+	utilities/packetgen/Makefile
+	utilities/packetgen/include/Makefile
+	utilities/packetgen/src/Makefile
+	utilities/packetrelay/Makefile
+	utilities/packetrelay/include/Makefile
+	utilities/packetrelay/src/Makefile
+	utilities/packetsend/Makefile
+	utilities/packetsend/include/Makefile
+	utilities/packetsend/src/Makefile
+	utilities/packetread/include/Makefile
+	utilities/packetread/src/Makefile
+	utilities/packetread/Makefile
+	utilities/packetchan2beam/src/Makefile
+	utilities/packetchan2beam/Makefile
+           utilities/packetsqimport/Makefile
+	utilities/packetsqimport/src/Makefile
+	])])
+AC_CONFIG_FILES([Makefile
+ 	filters/Makefile])
+AC_OUTPUT

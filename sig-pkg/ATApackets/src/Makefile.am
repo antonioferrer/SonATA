@@ -32,7 +32,7 @@
 
 ## Process this file with automake to produce Makefile.in
 
-top_srcdir = ..
+
 top_builddir = ..
 
 AUTOMAKE_OPTIONS = foreign
@@ -57,12 +57,12 @@ TESTS =
 
 EXTRA_PROGRAMS =
 
-PKT_INCLUDE = $(top_srcdir)/include
+PKT_INCLUDE = $(srcdir)/../include
 
-SUP_INCLUDE = $(top_srcdir)/include
+SUP_INCLUDE = $(srcdir)/../include
 
 INCLUDES = -I$(PKT_INCLUDE) -I$(SUP_INCLUDE)
 
-LIBLIST = -L.
+LIBLIST = -L$(srcdir)
 
 LDADD = $(LIBLIST)

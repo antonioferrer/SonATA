@@ -32,8 +32,6 @@
 
 ## Process this file with automake to produce Makefile.in
 
-top_srcdir = ..
-top_builddir = ..
 
 AUTOMAKE_OPTIONS = foreign
 
@@ -41,13 +39,13 @@ lib_LIBRARIES =	libDadd.a
 
 PUBLIC_HEADER_FILES =
 
-SIGPROC_DIR = $(top_srcdir)/..
+SIGPROC_DIR = $(srcdir)/../..
 SIGPROC_INCDIR = $(SIGPROC_DIR)/include
 
-SSE_DIR = $(top_srcdir)/../../sse-pkg
+SSE_DIR = $(srcdir)/../../../sse-pkg
 SSE_INCDIR = $(SSE_DIR)/include
 
-SSE_INTERFACE_DIR = $(top_builddir)/../../sse-pkg/sseInterfaceLib
+SSE_INTERFACE_DIR = $(srcdir)/../../../sse-pkg/sseInterfaceLib
 SSE_INTERFACE_INCDIR = $(SSE_INTERFACE_DIR)
 
 libDadd_a_SOURCES = \
@@ -65,10 +63,10 @@ TESTS =
 
 EXTRA_PROGRAMS =
 
-DADD_INCLUDE = ../include
+DADD_INCLUDE = $(srcdir)/../include
 
 INCLUDES = -I$(DADD_INCLUDE) -I$(SIGPROC_INCDIR) \
 		-I$(SSE_INCDIR) -I$(SSE_INTERFACE_INCDIR)
-LIBLIST = -L.
+LIBLIST = -L$(srcdir)
 
 LDADD = $(LIBLIST)

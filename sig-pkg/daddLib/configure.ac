@@ -28,27 +28,69 @@
 #
 ################################################################################
 
-AC_INIT(scripts,0.1)
-AM_CONFIG_HEADER(config.h)
-AC_PREFIX_DEFAULT($HOME/sonata_install)
-#AC_PREREQ(2.10)dnl               dnl Minimum Autoconf version required.
+AC_INIT(pfb, 0.01)
+AC_CONFIG_SRCDIR([include/Dadd.h])
+AC_CONFIG_HEADERS([config.h])
+AC_PREFIX_DEFAULT(lib)
+#AC_PREREQ([2.68])dnl               dnl Minimum Autoconf version required.
 AC_ARG_PROGRAM
 AM_MAINTAINER_MODE
 AM_INIT_AUTOMAKE([foreign])
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES])
+AC_SUBST(CXXFLAGS,"-Wall -Woverloaded-virtual -D_REENTRANT $(DEBUGFLAGS) \
+	-march=native -msse3 -pthread -fno-strict-aliasing")
+
+# add an option to build debug version
+AC_ARG_ENABLE(debug,
+[	--enable-debug		build debug version], debug=$enableval, debug=no)
+#[case "${enableval}" in
+#	yes) debug=true;;
+#	no) debug=false;;
+#	*) AC_MSG_ERROR(bad value ${enableval} for --enable-debug);;
+#esac],[debug=false])
+if test "$debug" = "yes"; then	
+	AC_SUBST(CXXFLAGS, "$CXXFLAGS -g -O0")
+else
+	AC_SUBST(CXXFLAGS, "$CXXFLAGS -O3")
+fi
 
 dnl Checks for programs.
+AC_PROG_RANLIB
 AC_PROG_INSTALL
+AC_PROG_CC_STDC
+AC_PROG_CPP
+AC_PROG_CXX
+AC_PROG_CXXCPP
+AM_PROG_AS
+AM_C_PROTOTYPES
+
+dnl Checks for header files.
+AC_HEADER_STDC
+AC_CHECK_HEADERS(limits.h inttypes.h unistd.h)
+
+dnl Checks for typedefs, structures, and compiler characteristics.
+AC_C_CONST
+AC_CHECK_TYPES([int32_t, uint32_t, int16_t, unint16_t, int8_t, uint8_t])
 
 dnl Checks for library functions.
+AC_FUNC_ALLOCA
+AC_CHECK_LIB(socket,recvfrom)
 AC_SEARCH_LIBS(Tcl_Init, tcl8.3 tcl8.2 tcl)
 
+dnl checks for endian-ness
+AC_C_BIGENDIAN
+
 dnl initialize libtool
-AC_LIBTOOL_DLOPEN
+_LT_SET_OPTION([LT_INIT],[dlopen])
+AC_DIAGNOSE([obsolete],[AC_LIBTOOL_DLOPEN: Remove this warning and the call to _LT_SET_OPTION when you
+put the `dlopen' option into LT_INIT's first parameter.])
+
 AC_DISABLE_SHARED
-AC_PROG_LIBTOOL
+LT_INIT
 AC_SUBST(LIBTOOL_DEPS)
-AC_OUTPUT(Makefile
-	jane/Makefile
-	kes/Makefile
-	)
+AC_CONFIG_FILES([Makefile
+	  include/Makefile
+	  src/Makefile
+	  test/Makefile
+	])
+AC_OUTPUT

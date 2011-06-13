@@ -32,8 +32,6 @@
 
 ## Process this file with automake to produce Makefile.in
 
-top_srcdir = ..
-top_builddir = ..
 
 AUTOMAKE_OPTIONS = foreign
 
@@ -49,23 +47,23 @@ EXTRA_DIST =
 
 BUILT_SOURCES =
 
-DADD_LIBDIR = ../src
+DADD_LIBDIR = $(builddir)/../src
 DADD_LIB = $(DADD_LIBDIR)/libDadd.a
 
 LIB_DEPENDS = $(DADD_LIB)
 
 test_DEPENDENCIES = $(LIB_DEPENDS)
 
-DADDINCLUDE = ../include
+DADDINCLUDE = $(srcdir)/../include
 
-SIGPROC_DIR = $(top_srcdir)/..
+SIGPROC_DIR = $(srcdir)/../..
 SIGPROC_INCDIR = $(SIGPROC_DIR)/include
 
-SSE_INCDIR = $(top_srcdir)/../../sse-pkg/include
+SSE_INCDIR = $(srcdir)/../../../sse-pkg/include
 
 INCLUDES= -I . -I$(DADDINCLUDE) \
-	-I$(top_srcdir)/include -I$(SIGPROC_INCDIR) \
-	-I$(top_srcdir)/lib -I$(SSE_INCDIR)
+	-I$(srcdir)/../include -I$(SIGPROC_INCDIR) \
+	-I$(srcdir)/../lib -I$(SSE_INCDIR)
 	
 
 test_SOURCES = \

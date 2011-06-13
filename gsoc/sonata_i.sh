@@ -109,7 +109,7 @@ sleep 3
 #                Preparing the files       		                            #
 ####################################################################################
 echo "Preparing the files"
-sed -i 's@ACE_ROOT="$ACE_ROOT"@ACE_ROOT="'$HOME'/SonATA/packages/ACE_wrappers"@g'    ~/SonATA/sse-pkg/configure.in
+sed -i 's@ACE_ROOT="$ACE_ROOT"@ACE_ROOT="'$HOME'/SonATA/packages/ACE_wrappers"@g'    ~/SonATA/sse-pkg/configure.ac
 sed -i 's@lappend ::auto_path /usr/local/lib@lappend ::auto_path '$HOME'/sonata_install/lib@g' ~/SonATA/scripts/sserc.tcl
 sleep 3
 
