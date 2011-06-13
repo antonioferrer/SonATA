@@ -47,11 +47,7 @@ EXTRA_DIST =
 
 BUILT_SOURCES =
 
-<<<<<<< HEAD
 DFB_LIB_DIR = $(builddir)/../src
-=======
-DFB_LIB_DIR = $(top_builddir)/src
->>>>>>> origin/gsoc
 DFB_LIB = $(DFB_LIB_DIR)/libDfb.a
 
 SIGPROC_DIR = $(srcdir)/../..
@@ -65,11 +61,7 @@ LIB_DEPENDS = $(DFB_LIB)
 
 test_DEPENDENCIES = $(LIB_DEPENDS)
 
-<<<<<<< HEAD
 DFBINCLUDE = $(srcdir)/../include
-=======
-DFBINCLUDE = $(top_srcdir)/include
->>>>>>> origin/gsoc
 
 INCLUDES= -I . -I$(DFBINCLUDE) -I$(PKT_INCDIR) \
 	-I$(srcdir)/../include \
@@ -84,14 +76,8 @@ test_SOURCES = \
 
 DFB_LIBS = \
   -lpthread -lnsl \
-<<<<<<< HEAD
    $(builddir)/../src/libDfb.a \
   -lfftw3f \
    $(builddir)/../../ATApackets/src/libSup.a
-=======
-   $(top_builddir)/src/libDfb.a \
-  -lfftw3f \
-   $(top_builddir)/../ATApackets/src/libSup.a
->>>>>>> origin/gsoc
 
 LDADD = $(DFB_LIBS)

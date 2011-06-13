@@ -47,22 +47,14 @@ EXTRA_DIST =
 
 BUILT_SOURCES =
 
-<<<<<<< HEAD
 DADD_LIBDIR = $(builddir)/../src
-=======
-DADD_LIBDIR = $(top_builddir)/src
->>>>>>> origin/gsoc
 DADD_LIB = $(DADD_LIBDIR)/libDadd.a
 
 LIB_DEPENDS = $(DADD_LIB)
 
 test_DEPENDENCIES = $(LIB_DEPENDS)
 
-<<<<<<< HEAD
 DADDINCLUDE = $(srcdir)/../include
-=======
-DADDINCLUDE = $(top_srcdir)/include
->>>>>>> origin/gsoc
 
 SIGPROC_DIR = $(srcdir)/../..
 SIGPROC_INCDIR = $(SIGPROC_DIR)/include

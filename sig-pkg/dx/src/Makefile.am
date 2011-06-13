@@ -42,13 +42,8 @@ EXTRA_DIST =
 
 BUILT_SOURCES =
 
-<<<<<<< HEAD
 DX_INCDIR = $(srcdir)/../include
 DX_LIBDIR = $(builddir)/../lib
-=======
-DX_INCDIR = $(top_srcdir)/include
-DX_LIBDIR = $(top_builddir)/lib
->>>>>>> origin/gsoc
 DX_LIB = $(DX_LIBDIR)/libDx.a
 
 SIGPROC_DIR = $(srcdir)/../..
@@ -57,11 +52,7 @@ SIGPROC_INCDIR = $(SIGPROC_DIR)/include
 # SonATA library directories
 SONATA_DIR = $(srcdir)/../../sonataLib
 SONATA_INCDIR = $(SONATA_DIR)/include
-<<<<<<< HEAD
 SONATA_LIBDIR = $(builddir)/../../sonataLib/src
-=======
-SONATA_LIBDIR = $(top_builddir)/../sonataLib/src
->>>>>>> origin/gsoc
 SONATA_LIB = $(SONATA_LIBDIR)/libSonata.a
 
 SSE_INCDIR = $(srcdir)/../../../sse-pkg/include
@@ -81,40 +72,24 @@ SSE_UTIL_LIB = $(SSE_UTIL_DIR)/libsseutil.a
 # DFB library directories
 DFB_DIR = $(srcdir)/../../dfbLib
 DFB_INCDIR = $(DFB_DIR)/include
-<<<<<<< HEAD
 DFB_LIBDIR = $(builddir)/../../dfbLib/src
-=======
-DFB_LIBDIR = $(top_builddir)/../dfbLib/src
->>>>>>> origin/gsoc
 DFB_LIB = $(DFB_LIBDIR)/libDfb.a
 
 # the following are packet headers
 PKT_DIR = $(srcdir)/../../ATApackets
 PKT_INCDIR = $(PKT_DIR)/include
-<<<<<<< HEAD
 PKT_LIBDIR = $(builddir)/../../ATApackets/src
-=======
-PKT_LIBDIR = $(top_builddir)/../ATApackets/src
->>>>>>> origin/gsoc
 
 # spectra library
 SPECTRA_DIR = $(srcdir)/../../spectraLib
 SPECTRA_INCDIR = $(SPECTRA_DIR)/include
-<<<<<<< HEAD
 SPECTRA_LIBDIR = $(builddir)/../../spectraLib/src
-=======
-SPECTRA_LIBDIR = $(top_builddir)/../spectraLib/src
->>>>>>> origin/gsoc
 SPECTRA_LIB = $(SPECTRA_LIBDIR)/libSpectra.a
 
 # DADD library
 DADD_DIR = $(srcdir)/../../daddLib
 DADD_INCDIR = $(DADD_DIR)/include
-<<<<<<< HEAD
 DADD_LIBDIR = $(builddir)/../../daddLib/src
-=======
-DADD_LIBDIR = $(top_builddir)/../daddLib/src
->>>>>>> origin/gsoc
 DADD_LIB = $(DADD_LIBDIR)/libDadd.a
 
 LIB_DEPENDS = $(DX_LIB) $(SONATA_LIB) $(SPECTRA_LIB) $(DADD_LIB) \

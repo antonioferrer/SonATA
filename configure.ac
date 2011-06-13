@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ################################################################################
 #
 # File:    configure.ac
@@ -28,8 +27,6 @@
 # The SETI Institute at www.seti.org or setiquest.org. 
 #
 ################################################################################
-=======
->>>>>>> origin/gsoc
 AC_INIT([SonATA],[version-1.0])
 AC_ARG_PROGRAM
 AM_MAINTAINER_MODE

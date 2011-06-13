@@ -62,31 +62,19 @@ SSE_UTIL_LIB = $(SSE_UTIL_DIR)/libsseutil.a
 # DFB library directories
 DFB_DIR = $(srcdir)/../../dfbLib
 DFB_INCDIR = $(DFB_DIR)/include
-<<<<<<< HEAD
 DFB_LIBDIR = $(builddir)/../../dfbLib/src
-=======
-DFB_LIBDIR = $(top_builddir)/../dfbLib/src
->>>>>>> origin/gsoc
 DFB_LIB = $(DFB_LIBDIR)/libDfb.a
 
 # the following are packet headers
 PKT_HDR_DIR = $(srcdir)/../../ATApackets
 PKT_HDR_INCDIR = $(PKT_HDR_DIR)/include
-<<<<<<< HEAD
 PKT_HDR_LIBDIR =  $(builddir)/../../ATApackets/src
-=======
-PKT_HDR_LIBDIR =  $(top_builddir)/../ATApackets/src
->>>>>>> origin/gsoc
 PKT_LIB = $(PKT_HDR_LIBDIR)/libPkt.a
 
 # SonATA library directories
 SONATA_DIR = $(srcdir)/../../sonataLib
 SONATA_INCDIR = $(SONATA_DIR)/include
-<<<<<<< HEAD
 SONATA_LIBDIR = $(builddir)/../../sonataLib/src
-=======
-SONATA_LIBDIR = $(top_builddir)/../sonataLib/src
->>>>>>> origin/gsoc
 SONATA_LIB = $(SONATA_LIBDIR)/libSonata.a
 
 LIB_DEPENDS = $(SSE_INTERFACE_LIB) $(SSE_CHAN_INTERFACE_LIB) \
