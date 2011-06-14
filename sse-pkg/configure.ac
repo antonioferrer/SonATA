@@ -76,7 +76,7 @@ AM_C_PROTOTYPES
 dnl Checks for header files.
 AC_HEADER_STDC
 AC_HEADER_TIME
-AC_CHECK_HEADERS(limits.h inttypes.h unistd.h features.h sys/time.h)
+AC_CHECK_HEADERS([arpa/inet.h fcntl.h float.h inttypes.h limits.h netdb.h netinet/in.h stdlib.h string.h strings.h sys/file.h sys/ioctl.h sys/socket.h sys/statfs.h sys/statvfs.h sys/time.h unistd.h utime.h])
 
 
 dnl Checks for typedefs, structures, and compiler characteristics.
@@ -96,6 +96,9 @@ if test -d /usr/local/CppUnit ; then
 	CPPUNIT_ROOT=/usr/local/CppUnit
 fi
 
+dnl checks for mysql libraries
+AC_CHECK_LIB([mysqlclient], [main])
+AC_CHECK_LIB([mysqlclient_r], [main])
 
 AC_FUNC_ALLOCA
 dnl AC_CHECK_LIB(pthread,pthread_cond_timedwait)

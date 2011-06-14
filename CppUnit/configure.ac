@@ -5,7 +5,7 @@ AC_PREREQ(2.10)dnl               dnl Minimum Autoconf version required.
 AM_MAINTAINER_MODE
 
 AM_INIT_AUTOMAKE(CppUnit, 1.3)
-
+m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES])
 dnl Checks for programs.
 AC_PROG_CXX
 AC_PROG_AWK
