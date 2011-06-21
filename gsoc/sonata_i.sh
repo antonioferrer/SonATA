@@ -72,7 +72,8 @@ sleep 3
 echo "Installing the dependencies for SonATA"
 sudo zypper ar http://download.opensuse.org/distribution/11.3/repo/non-oss non-oss
 sudo zypper ar http://download.opensuse.org/repositories/multimedia:/libs/openSUSE_11.3/ Multimedia_Libs
-sudo zypper install https://github.com/khrm/SonATA/blob/gsoc/gsoc/sonata-build-meta-1.0.alpha-1.noarch.rpm?raw=true
+wget https://github.com/khrm/SonATA/blob/gsoc/gsoc/sonata-build-meta-1.0.alpha-1.noarch.rpm?raw=true
+sudo zypper install sonata-build-meta-1.0.alpha-1.noarch.rpm
 sleep 3
 
 ####################################################################################
