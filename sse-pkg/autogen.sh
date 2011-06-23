@@ -1,7 +1,7 @@
 #!/bin/sh
 ################################################################################
 #
-# File:    reconfig
+# File:    autogen.sh
 # Project: OpenSonATA
 # Authors: The OpenSonATA code is the result of many programmers
 #          over many years
@@ -28,51 +28,6 @@
 # The SETI Institute at www.seti.org or setiquest.org. 
 #
 ################################################################################
-
-
-# updates Makefile infrastructure
-
-# usage:
-
-# ./reconfig [--dxlibsonly] [--installdir <dir>]
-# --dxlibsonly : build only the dx libraries
-# --installdir <dir> :  configure <dir> as the installation directory
-
-
-
-defaultInstallDir="${HOME}/sonata_install"
-installDir=${defaultInstallDir}
-options=""
-
-# process command line args
-while [ "$1" ]
-do
-   if [ "$1" = "--dxlibsonly" ]
-   then
-
-      options="${options} --enable-dxlibsonly"
-
-   elif [ "$1" = "--installdir" ]
-   then
-
-      if [ "$2" = "" ]
-      then
-         echo "Must give install directory name"
-         exit
-      fi
-
-      installDir="$2"
-      options="${options} --prefix=${installDir}"
-      shift
-
-   else
-      options="${options} $1"
-   fi
-   shift
-done
-
-
-# reconfigure the package: 
 
 echo "libtoolize..."
 libtoolize --force --automake 
