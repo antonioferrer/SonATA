@@ -1,5 +1,5 @@
 #!/bin/bash
-################################################################################
+####################################################################################
 #
 # File   : sonata_i.sh
 # Project: SonATA
@@ -27,7 +27,7 @@
 # For alternate licensing arrangements, please contact
 # The SETI Institute at www.seti.org or setiquest.org.
 #
-################################################################################
+####################################################################################
 
 
 
@@ -38,7 +38,7 @@ clear
 
 
 ####################################################################################
-#                            Checking for SonATA		                 #
+#                            Checking for SonATA		                   #
 ####################################################################################
 if [ -f $HOME'/SonATA/LICENSE.txt' ]
 then
@@ -67,7 +67,7 @@ fi
 sleep 3
 
 ####################################################################################
-#               Installing the dependencies for SonATA			      #
+#               Installing the dependencies for SonATA			           #
 ####################################################################################
 echo "Installing the dependencies for SonATA"
 sudo zypper ar http://download.opensuse.org/distribution/11.3/repo/non-oss non-oss
@@ -77,7 +77,7 @@ sudo zypper install sonata-build-meta-1.0.alpha-1.noarch.rpm
 sleep 3
 
 ####################################################################################
-#                Configuring the java                           		      #
+#                Configuring the java                           	           #
 ####################################################################################
 echo "Configure the Java to use Sun Java version"
 sudo su -c 'update-alternatives --config javac'
@@ -85,13 +85,21 @@ sudo su -c 'update-alternatives --config java'
 sleep 3
 
 ####################################################################################
-#                Downloading the extra libraries and data       		      #
+#                Downloading the extra libraries and data       		   #
 ####################################################################################
 echo "Downloading the extra libraries and data"
 
 echo "Getting the ACE"
-cd ~/SonATA/scripts
-./get_packages
+cd ~/SonATA/
+PACKAGES_VERSION=packages_1.0
+PACKAGES_DIR=packages
+PACKAGES_FILE=$PACKAGES_VERSION.tar.gz
+wget http://setiquest.org/sonata_files/$PACKAGES_FILE
+tar zxf $PACKAGES_FILE
+rm -fr $PACKAGES_FILE
+mv $PACKAGES_VERSION $PACKAGES_DIR
+PACKAGES_PATH=`pwd`/$PACKAGES_DIR
+ACE_ROOT=$PACKAGES_PATH/ACE_wrappers
 sleep 2
 if [ -f $HOME'/sonata_install/data/vger-xpol-2010-07-14-406.pktdata' ]
 then 
@@ -107,7 +115,7 @@ fi
 sleep 3
 
 ####################################################################################
-#                Preparing the files       		                            #
+#                Preparing the files       		                           #
 ####################################################################################
 echo "Preparing the files"
 sed -i 's@ACE_ROOT="$ACE_ROOT"@ACE_ROOT="'$HOME'/SonATA/packages/ACE_wrappers"@g'    ~/SonATA/sse-pkg/configure.ac
@@ -115,7 +123,7 @@ sed -i 's@lappend ::auto_path /usr/local/lib@lappend ::auto_path '$HOME'/sonata_
 sleep 3
 
 ####################################################################################
-#                Creating a ssh key and configuring it          		      #
+#                Creating a ssh key and configuring it          		   #
 ####################################################################################
 echo "Starting the ssh daemon"
 sudo /etc/init.d/sshd start
@@ -129,7 +137,5 @@ echo "###########################################################"
 sleep 3
 echo "This will set the automatic key usage without password"
 sleep 2
-
-echo "Continue building SonATA now by following the instruction here:http://setiquest.org/content/sonata-build" 
 
 
