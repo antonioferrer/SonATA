@@ -121,9 +121,8 @@ echo "Starting the ssh daemon"
 sudo /etc/init.d/sshd start
 cd ~/.ssh
 echo "Creating the ssh key"
-ssh-keygen
-
-cp ./id_rsa.pub authorized_keys
+ssh-keygen -f sonata -t rsa -q
+ssh-copy-id -i ~/.ssh/sonata.pub $USERNAME@`hostname`
 echo "###########################################################"
 echo "#     Type ssh $USERNAME@`hostname` and then exit         #"
 echo "###########################################################"
