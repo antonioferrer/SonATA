@@ -33,7 +33,7 @@
 ## Process this file with automake to produce Makefile.in
 
 
-top_builddir = ..
+
 
 AUTOMAKE_OPTIONS = foreign
 

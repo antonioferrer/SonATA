@@ -31,7 +31,7 @@ AC_INIT(SonATA-sse, 1.0)
 AC_CONFIG_SRCDIR([include/sseInterface.h])
 AC_CONFIG_HEADERS([config.h])
 AC_PREFIX_DEFAULT($HOME/sonata_install)
-AC_PREREQ([2.68])dnl               dnl Minimum Autoconf version required.
+AC_PREREQ([2.57])dnl               dnl Minimum Autoconf version required.
 AC_ARG_PROGRAM
 AM_MAINTAINER_MODE
 AM_INIT_AUTOMAKE([foreign])
@@ -190,7 +190,7 @@ dnl AC_CONFIG_SUBDIRS(libpqxx)
 
 
 # Define the default ACE_ROOT for the Makefiles.
-ACE_ROOT="$ACE_ROOT"
+ACE_ROOT="/home/khrm/SonATA/packages/ACE_wrappers"
 
 # build with stlport for debugging
 AC_ARG_WITH(stlport, [  --with-stlport          use the stlport library])
@@ -258,6 +258,31 @@ AC_SUBST(MYSQL_ROOT, "/usr/local/mysql")
 
 AC_SUBST(ACE_ROOT)
 AC_SUBST(CPPUNIT_ROOT)
+
+#--------------------------------------------------------------------
+#   Check for tcl.h
+#--------------------------------------------------------------------
+AC_ARG_WITH(tcl-includes,
+            [  --with-tcl-includes=DIR where to look for tcl.h],
+            tcl_includes=$withval, tcl_includes=$prefix/include)
+
+AC_MSG_CHECKING([where to look for tcl.h])
+TCL_INCLUDE_DIR=""
+for dir in $tcl_includes $prefix/include/ /usr/include /usr/include/tcl; do
+    if test -r $dir/tcl.h; then
+        TCL_INCLUDE_DIR=$dir
+        break
+    fi
+done
+
+if test -z "$TCL_INCLUDE_DIR"; then
+    AC_MSG_ERROR([
+  Can't find tcl.h.  Use --with-tcl-includes to specify the directory
+  containing tcl.h on your system.])
+else
+    AC_MSG_RESULT($TCL_INCLUDE_DIR/tcl.h)
+fi
+AC_SUBST(TCL_INCLUDE_DIR)
 
 AC_CONFIG_FILES([Makefile
 	  m4/Makefile

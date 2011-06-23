@@ -49,7 +49,7 @@ LIB_DEPENDS = $(SSE_INTERFACE_LIB) $(GPIB_INTERFACE_LIB) \
 INCLUDES= -I$(SSE_INC_DIR) -I$(SSE_INTERFACE_INC_DIR) \
            -I$(SSEUTIL_INC_DIR) \
 	-I$(GPIB_INTERFACE_INC_DIR) @GPIB_INCLUDES@  \
-           -I@srcdir@ 
+        -I$(TCL_INCLUDE_DIR)      -I@srcdir@ 
 
 # build a version of tclsh that has all the libraries
 # needed to run the test signal generator equipment

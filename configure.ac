@@ -35,6 +35,9 @@ AM_INIT_AUTOMAKE([foreign])
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES])
 
 AC_CONFIG_HEADERS(config.h)
+
+AC_PREFIX_DEFAULT($HOME/sonata_install)
+
 AC_CONFIG_SUBDIRS([tclreadline	
                    CppUnit
                    sse-pkg
