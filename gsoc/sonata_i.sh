@@ -74,6 +74,7 @@ sudo zypper ar http://download.opensuse.org/distribution/11.3/repo/non-oss non-o
 sudo zypper ar http://download.opensuse.org/repositories/multimedia:/libs/openSUSE_11.3/ Multimedia_Libs
 wget https://github.com/khrm/SonATA/blob/gsoc/gsoc/sonata-build-meta-1.0.alpha-1.noarch.rpm?raw=true
 sudo zypper install sonata-build-meta-1.0.alpha-1.noarch.rpm
+rm sonata-build-meta-1.0.alpha-1.noarch.rpm
 sleep 3
 
 ####################################################################################
@@ -115,7 +116,7 @@ fi
 sleep 3
 
 ####################################################################################
-#                Preparing the files       		                            #
+#                Preparing the files       		                           #
 ####################################################################################
 echo "Preparing the files"
 sed -i 's@ACE_ROOT="$ACE_ROOT"@ACE_ROOT="'$HOME'/SonATA/packages/ACE_wrappers"@g'    ~/SonATA/sse-pkg/configure.ac
@@ -123,7 +124,7 @@ sed -i 's@lappend ::auto_path /usr/local/lib@lappend ::auto_path '$HOME'/sonata_
 sleep 3
 
 ####################################################################################
-#                Creating a ssh key and configuring it          		      #
+#                Creating a ssh key and configuring it          	           #
 ####################################################################################
 echo "Starting the ssh daemon"
 sudo /etc/init.d/sshd start
