@@ -115,7 +115,7 @@ fi
 sleep 3
 
 ####################################################################################
-#                Preparing the files       		                           #
+#                Preparing the files       		                            #
 ####################################################################################
 echo "Preparing the files"
 sed -i 's@ACE_ROOT="$ACE_ROOT"@ACE_ROOT="'$HOME'/SonATA/packages/ACE_wrappers"@g'    ~/SonATA/sse-pkg/configure.ac
@@ -123,11 +123,11 @@ sed -i 's@lappend ::auto_path /usr/local/lib@lappend ::auto_path '$HOME'/sonata_
 sleep 3
 
 ####################################################################################
-#                Creating a ssh key and configuring it          		   #
+#                Creating a ssh key and configuring it          		      #
 ####################################################################################
 echo "Starting the ssh daemon"
 sudo /etc/init.d/sshd start
-cd ~/.ssh
+cd ~/.ssh 2>/dev/null || (mkdir ~/.ssh && chmod 700 ~/.ssh) && cd ~/.ssh
 echo "Creating the ssh key"
 ssh-keygen -f sonata -t rsa -q
 ssh-copy-id -i ~/.ssh/sonata.pub $USERNAME@`hostname`
