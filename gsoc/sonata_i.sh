@@ -130,13 +130,11 @@ echo "Starting the ssh daemon"
 sudo /etc/init.d/sshd start
 cd ~/.ssh 2>/dev/null || (mkdir ~/.ssh && chmod 700 ~/.ssh) && cd ~/.ssh
 echo "Creating the ssh key"
-ssh-keygen -f sonata -t rsa -q
-ssh-copy-id -i ~/.ssh/sonata.pub `whoami`@`hostname`
+ssh-keygen -f id_rsa -t rsa -q
+ssh-copy-id -i ~/.ssh/id_rsa.pub `whoami`@`hostname`
 echo "###########################################################"
-echo "#     Type ssh `whoami`@`hostname` and then exit         #"
+echo "#     Type ssh `whoami`@`hostname` and then exit          #"
 echo "###########################################################"
 sleep 3
 echo "This will set the automatic key usage without password"
-sleep 2
-
 
