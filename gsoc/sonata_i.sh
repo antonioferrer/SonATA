@@ -59,7 +59,8 @@ echo "Do you want to continue building by downloading the SonATA without Github 
 	      exit 1;;
       [Yy]* ) echo  "Downloading the SonATA"
               cd $HOME
-              git clone git://github.com/setiQuest/SonATA.git;;
+              git clone git://github.com/setiQuest/SonATA.git
+              break;;
           * ) echo "Only y or n accepted";;   
           esac
           done
@@ -121,7 +122,30 @@ sleep 3
 echo "Preparing the files"
 sed -i 's@ACE_ROOT="$ACE_ROOT"@ACE_ROOT="'$HOME'/SonATA/packages/ACE_wrappers"@g'    ~/SonATA/sse-pkg/configure.ac
 sed -i 's@lappend ::auto_path /usr/local/lib@lappend ::auto_path '$HOME'/sonata_install/lib@g' ~/SonATA/scripts/sserc.tcl
-sleep 3
+echo "Resource the environment using assumption that you are using bash?(y/n)"
+   while true; do
+   read choice
+   case $choice in
+      [Nn]* ) echo  "Your shell should have these variable if you are using bash or equvialent other shell"
+              echo  '  ACE_ROOT=$HOME/SonATA/packages/ACE_wrappers
+                       PACKAGES_PATH=$HOME/SonATA/packages
+                       export LD_LIBRARY_PATH=$ACE_ROOT/ace:$ACE_ROOT/lib:$PACKAGES_PATH/lib:$LD_LIBRARY_PATH
+                       export PATH=.:$HOME/sonata_install/bin:$PACKAGES_PATH/bin:$PATH
+                       ulimit -s unlimited'
+                       break;;
+      [Yy]* ) echo  "Resourcing the enviroment by changing .bashrc"
+              sed -i '
+$ a\
+ACE_ROOT=$HOME/SonATA/packages/ACE_wrappers\
+PACKAGES_PATH=$HOME/SonATA/packages\
+export LD_LIBRARY_PATH=$ACE_ROOT/ace:$ACE_ROOT/lib:$PACKAGES_PATH/lib:$LD_LIBRARY_PATH\
+export PATH=.:$HOME/sonata_install/bin:$PACKAGES_PATH/bin:$PATH\
+ulimit -s unlimited' ~/.bashrc
+                       break;;
+          * ) echo "Only y or n are accepted";;   
+          esac
+          done 
+sleep 2
 
 ####################################################################################
 #                Creating a ssh key and configuring it          	           #
@@ -137,4 +161,5 @@ echo "#     Type ssh `whoami`@`hostname` and then exit          #"
 echo "###########################################################"
 sleep 3
 echo "This will set the automatic key usage without password"
+
 
