@@ -36,37 +36,6 @@ cd /tmp
 exec > >(tee  ${0##*/}-$(date +"%b-%d-%y").log) ## Log the Script
 clear
 
-
-####################################################################################
-#                            Checking for SonATA                                   #
-####################################################################################
-if [ -f $HOME'/SonATA/LICENSE.txt' ]
-then
-echo "SonATA successfully found"
-else
-echo "SonATA not found"
-echo "If you want to contribute you should open a github account and use the" 
-echo "            standard GitHub fork/pull mechanism"				
-sleep 1
-echo " For more information visit http://setiquest.org/wiki/index.php/GitHub"
-echo "       and http://setiquest.org/content/sonata-download               "
-sleep 1
-echo "Do you want to continue building by downloading the SonATA without Github fork/pull (y/n)"
-   while true; do
-   read choice
-   case $choice in
-      [Nn]* ) echo  "Aborting the build"
-	      exit 1;;
-      [Yy]* ) echo  "Downloading the SonATA"
-              cd $HOME
-              git clone git://github.com/setiQuest/SonATA.git
-              break;;
-          * ) echo "Only y or n accepted";;   
-          esac
-          done
-fi 
-sleep 3
-
 ####################################################################################
 #               Installing the dependencies for SonATA                             #
 ####################################################################################
@@ -118,6 +87,38 @@ fi
 sleep 3
 
 ####################################################################################
+#                            Checking for SonATA                                   #
+####################################################################################
+if [ -f $HOME'/SonATA/LICENSE.txt' ]
+then
+echo "SonATA successfully found"
+else
+echo "SonATA not found"
+echo "If you want to contribute you should open a github account and use the" 
+echo "            standard GitHub fork/pull mechanism"				
+sleep 1
+echo " For more information visit http://setiquest.org/wiki/index.php/GitHub"
+echo "       and http://setiquest.org/content/sonata-download               "
+sleep 1
+echo "Do you want to continue building by downloading the SonATA without Github fork/pull (y/n)"
+   while true; do
+   read choice
+   case $choice in
+      [Nn]* ) echo  "Aborting the build"
+	      exit 1;;
+      [Yy]* ) echo  "Downloading the SonATA"
+              cd $HOME
+              git clone git://github.com/khrm/SonATA.git
+              cd SonATA
+              git checkout -t -b gsoc remotes/origin/gsoc
+              break;;
+          * ) echo "Only y or n accepted";;   
+          esac
+          done
+fi 
+sleep 3
+
+####################################################################################
 #                Preparing the files                                               #
 ####################################################################################
 echo "Preparing the files"
@@ -149,7 +150,7 @@ ulimit -s unlimited' ~/.bashrc
 
 
 ####################################################################################
-#                creating the script for testing SonATA                            #
+#                Creating the script for testing SonATA                            #
 ####################################################################################
 mkdir -p ~/sonata_install
 mkdir -p ~/sonata_install/bin

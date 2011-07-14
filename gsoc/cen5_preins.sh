@@ -34,37 +34,6 @@ cd /tmp
 exec > >(tee  ${0##*/}-$(date +"%b-%d-%y").log) ## Log the Script
 clear
 
-
-####################################################################################
-#                            Checking for SonATA		                   #
-####################################################################################
-if [ -f $HOME'/SonATA/LICENSE.txt' ]
-then
-echo "SonATA successfully found"
-else
-echo "SonATA not found"
-echo "If you want to contribute you should open a github account and use the" 
-echo "            standard GitHub fork/pull mechanism"				
-sleep 1
-echo " For more information visit http://setiquest.org/wiki/index.php/GitHub"
-echo "       and http://setiquest.org/content/sonata-download               "
-sleep 1
-echo "Do you want to continue building by downloading the SonATA without Github fork/pull (y/n)"
-   while true; do
-   read choice
-   case $choice in
-      [Nn]* ) echo  "Aborting the build"
-	      exit 1;;
-      [Yy]* ) echo  "Downloading the SonATA"
-              cd $HOME
-              git clone git://github.com/setiQuest/SonATA.git
-              break;;
-          * ) echo "Only y or n accepted";;   
-          esac
-          done
-fi 
-sleep 3
-
 ####################################################################################
 #               Installing the dependencies for SonATA			           #
 ####################################################################################
@@ -171,7 +140,7 @@ echo "Download the java(y/n)?"
    case $choice in
          [Yy]* ) echo "Installing and Configuring the java";
                  cd /tmp
-#                 wget -O jdk-6u26-linux-x64-rpm.bin http://download.oracle.com/otn-pub/java/jdk/6u26-b03/jdk-6u26-linux-x64-rpm.bin
+                 wget -O jdk-6u26-linux-x64-rpm.bin http://download.oracle.com/otn-pub/java/jdk/6u26-b03/jdk-6u26-linux-x64-rpm.bin
                  chmod a+x jdk-6u26-linux-x64-rpm.bin
                  sudo su -c ./jdk-6u26-linux-x64-rpm.bin
                  sudo su -c '/usr/sbin/alternatives --install /usr/bin/java java /usr/java/jdk1.6.0_26/jre/bin/java 20000'
@@ -197,7 +166,7 @@ cd ~/SonATA/
 PACKAGES_VERSION=packages_1.0
 PACKAGES_DIR=packages
 PACKAGES_FILE=$PACKAGES_VERSION.tar.gz
-#wget http://setiquest.org/sonata_files/$PACKAGES_FILE
+wget http://setiquest.org/sonata_files/$PACKAGES_FILE
 tar zxf $PACKAGES_FILE
 rm -fr $PACKAGES_FILE
 mv $PACKAGES_VERSION $PACKAGES_DIR
@@ -231,6 +200,38 @@ fi
 sleep 3
 
 ####################################################################################
+#                            Checking for SonATA		                   #
+####################################################################################
+if [ -f $HOME'/SonATA/LICENSE.txt' ]
+then
+echo "SonATA successfully found"
+else
+echo "SonATA not found"
+echo "If you want to contribute you should open a github account and use the" 
+echo "            standard GitHub fork/pull mechanism"				
+sleep 1
+echo " For more information visit http://setiquest.org/wiki/index.php/GitHub"
+echo "       and http://setiquest.org/content/sonata-download               "
+sleep 1
+echo "Do you want to continue building by downloading the SonATA without Github fork/pull (y/n)"
+   while true; do
+   read choice
+   case $choice in
+      [Nn]* ) echo  "Aborting the build"
+	      exit 1;;
+      [Yy]* ) echo  "Downloading the SonATA"
+              cd $HOME
+              git clone git://github.com/khrm/SonATA.git
+              cd SonATA
+              git checkout -t -b gsoc remotes/origin/gsoc
+              break;;
+          * ) echo "Only y or n accepted";;   
+          esac
+          done
+fi 
+sleep 3
+
+####################################################################################
 #                Preparing the files       		                           #
 ####################################################################################
 echo "Preparing the files"
@@ -261,16 +262,20 @@ ulimit -s unlimited' ~/.bashrc
           done 
 
 ####################################################################################
-#                Creating a shortcut to test SonATA              	           #
+#                Creating the script for testing SonATA                            #
 ####################################################################################
-cat > ~/Desktop/test_sonata <<EOD
+mkdir -p ~/sonata_install
+mkdir -p ~/sonata_install/bin
+touch ~/sonata_install/bin/test_sonata
+rm ~/sonata_install/bin/test_sonata
+cat >  ~/sonata_install/bin/test_sonata <<EOD
 #!/bin/tcsh
 cd ~/sonata_install/scripts
 source spacecraft-demo-xpol-env-vars.tcsh
 ssh-add ~/.ssh/id_rsa 
 runsse.sh
 EOD
-chmod +x  ~/Desktop/test_sonata
+chmod +x  ~/sonata_install/bin/test_sonata
 
 ####################################################################################
 #                Creating a ssh key and configuring it          	           #
