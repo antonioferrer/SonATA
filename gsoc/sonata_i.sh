@@ -38,7 +38,7 @@ clear
 
 
 ####################################################################################
-#                            Checking for SonATA		                   #
+#                            Checking for SonATA                                   #
 ####################################################################################
 if [ -f $HOME'/SonATA/LICENSE.txt' ]
 then
@@ -68,9 +68,10 @@ fi
 sleep 3
 
 ####################################################################################
-#               Installing the dependencies for SonATA			           #
+#               Installing the dependencies for SonATA                             #
 ####################################################################################
 echo "Installing the dependencies for SonATA"
+sudo zypper -n update
 sudo zypper ar http://download.opensuse.org/distribution/11.3/repo/non-oss non-oss
 sudo zypper ar http://download.opensuse.org/repositories/multimedia:/libs/openSUSE_11.3/ Multimedia_Libs
 wget https://github.com/khrm/SonATA/blob/gsoc/gsoc/sonata-build-meta-1.0.alpha-1.noarch.rpm?raw=true
@@ -79,7 +80,7 @@ rm sonata-build-meta-1.0.alpha-1.noarch.rpm
 sleep 3
 
 ####################################################################################
-#                Configuring the java                           	           #
+#                Configuring the java                                              #
 ####################################################################################
 echo "Configure the Java to use Sun Java version"
 sudo su -c 'update-alternatives --config javac'
@@ -87,7 +88,7 @@ sudo su -c 'update-alternatives --config java'
 sleep 3
 
 ####################################################################################
-#                Downloading the extra libraries and data       		   #
+#                Downloading the extra libraries and data                          #
 ####################################################################################
 echo "Downloading the extra libraries and data"
 
@@ -117,7 +118,7 @@ fi
 sleep 3
 
 ####################################################################################
-#                Preparing the files       		                           #
+#                Preparing the files                                               #
 ####################################################################################
 echo "Preparing the files"
 sed -i 's@ACE_ROOT="$ACE_ROOT"@ACE_ROOT="'$HOME'/SonATA/packages/ACE_wrappers"@g'    ~/SonATA/sse-pkg/configure.ac
@@ -145,10 +146,26 @@ ulimit -s unlimited' ~/.bashrc
           * ) echo "Only y or n are accepted";;   
           esac
           done 
-sleep 2
+
 
 ####################################################################################
-#                Creating a ssh key and configuring it          	           #
+#                creating the script for testing SonATA                            #
+####################################################################################
+mkdir -p ~/sonata_install
+mkdir -p ~/sonata_install/bin
+touch ~/sonata_install/bin/test_sonata
+rm ~/sonata_install/bin/test_sonata
+cat >  ~/sonata_install/bin/test_sonata <<EOD
+#!/bin/tcsh
+cd ~/sonata_install/scripts
+source spacecraft-demo-xpol-env-vars.tcsh
+ssh-add ~/.ssh/id_rsa 
+runsse.sh
+EOD
+chmod +x  ~/sonata_install/bin/test_sonata
+
+####################################################################################
+#                Creating a ssh key and configuring it                             #
 ####################################################################################
 echo "Starting the ssh daemon"
 sudo /etc/init.d/sshd start

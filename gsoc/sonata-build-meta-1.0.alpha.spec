@@ -65,12 +65,12 @@ Requires:      libtool
 Requires:      automake
 Requires:      tcsh
 Requires:      bash
-Requires:      java-sun
-Requires:      java-devel-sun
 Requires:      git
 Requires:      openssh
 Requires:      update-alternatives
-
+Requires:      xterm        
+Requires:      bc   
+    
 %description
 This metapackage package installs all the dependencies needed for the Setiquest SonATA.
 
@@ -87,6 +87,9 @@ This metapackage package installs all the dependencies needed for the Setiquest 
 
 
 %changelog
+* Mon Jul 11 2011 Khurram Baig (khrm.baig@gmail.com)
+- Added xterm as dependency
+
 * Wed May 25 2011 Khurram Baig (khrm.baig@gmail.com)
 - Added some more dependencies and license text
 
