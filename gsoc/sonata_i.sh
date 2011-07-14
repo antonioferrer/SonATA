@@ -57,36 +57,6 @@ sudo su -c 'update-alternatives --config java'
 sleep 3
 
 ####################################################################################
-#                Downloading the extra libraries and data                          #
-####################################################################################
-echo "Downloading the extra libraries and data"
-
-echo "Getting the ACE"
-cd ~/SonATA/
-PACKAGES_VERSION=packages_1.0
-PACKAGES_DIR=packages
-PACKAGES_FILE=$PACKAGES_VERSION.tar.gz
-wget http://setiquest.org/sonata_files/$PACKAGES_FILE
-tar zxf $PACKAGES_FILE
-rm -fr $PACKAGES_FILE
-mv $PACKAGES_VERSION $PACKAGES_DIR
-PACKAGES_PATH=`pwd`/$PACKAGES_DIR
-ACE_ROOT=$PACKAGES_PATH/ACE_wrappers
-sleep 2
-if [ -f $HOME'/sonata_install/data/vger-xpol-2010-07-14-406.pktdata' ]
-then 
-echo "Voyager Data Found"
-else
-echo "Getting the Voyager data"
-mkdir ~/sonata_install
-mkdir ~/sonata_install/data
-cd ~/sonata_install/data
-wget http://setiquest.org/sonata_files/vger-xpol-2010-07-14-406.pktdata.tar.Z
-tar -xvzf vger-xpol-2010-07-14-406.pktdata.tar.Z
-fi
-sleep 3
-
-####################################################################################
 #                            Checking for SonATA                                   #
 ####################################################################################
 if [ -f $HOME'/SonATA/LICENSE.txt' ]
@@ -117,6 +87,37 @@ echo "Do you want to continue building by downloading the SonATA without Github 
           done
 fi 
 sleep 3
+
+####################################################################################
+#                Downloading the extra libraries and data                          #
+####################################################################################
+echo "Downloading the extra libraries and data"
+
+echo "Getting the ACE"
+cd ~/SonATA/
+PACKAGES_VERSION=packages_1.0
+PACKAGES_DIR=packages
+PACKAGES_FILE=$PACKAGES_VERSION.tar.gz
+wget http://setiquest.org/sonata_files/$PACKAGES_FILE
+tar zxf $PACKAGES_FILE
+rm -fr $PACKAGES_FILE
+mv $PACKAGES_VERSION $PACKAGES_DIR
+PACKAGES_PATH=`pwd`/$PACKAGES_DIR
+ACE_ROOT=$PACKAGES_PATH/ACE_wrappers
+sleep 2
+if [ -f $HOME'/sonata_install/data/vger-xpol-2010-07-14-406.pktdata' ]
+then 
+echo "Voyager Data Found"
+else
+echo "Getting the Voyager data"
+mkdir ~/sonata_install
+mkdir ~/sonata_install/data
+cd ~/sonata_install/data
+wget http://setiquest.org/sonata_files/vger-xpol-2010-07-14-406.pktdata.tar.Z
+tar -xvzf vger-xpol-2010-07-14-406.pktdata.tar.Z
+fi
+sleep 3
+
 
 ####################################################################################
 #                Preparing the files                                               #

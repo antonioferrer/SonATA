@@ -157,6 +157,38 @@ sleep 3
 
 
 ####################################################################################
+#                            Checking for SonATA		                   #
+####################################################################################
+if [ -f $HOME'/SonATA/LICENSE.txt' ]
+then
+echo "SonATA successfully found"
+else
+echo "SonATA not found"
+echo "If you want to contribute you should open a github account and use the" 
+echo "            standard GitHub fork/pull mechanism"				
+sleep 1
+echo " For more information visit http://setiquest.org/wiki/index.php/GitHub"
+echo "       and http://setiquest.org/content/sonata-download               "
+sleep 1
+echo "Do you want to continue building by downloading the SonATA without Github fork/pull (y/n)"
+   while true; do
+   read choice
+   case $choice in
+      [Nn]* ) echo  "Aborting the build"
+	      exit 1;;
+      [Yy]* ) echo  "Downloading the SonATA"
+              cd $HOME
+              git clone git://github.com/khrm/SonATA.git
+              cd SonATA
+              git checkout -t -b gsoc remotes/origin/gsoc
+              break;;
+          * ) echo "Only y or n accepted";;   
+          esac
+          done
+fi 
+sleep 3
+
+####################################################################################
 #                Downloading the extra libraries and data       		   #
 ####################################################################################
 echo "Downloading the extra libraries and data"
@@ -199,37 +231,6 @@ tar -xvzf vger-xpol-2010-07-14-406.pktdata.tar.Z
 fi
 sleep 3
 
-####################################################################################
-#                            Checking for SonATA		                   #
-####################################################################################
-if [ -f $HOME'/SonATA/LICENSE.txt' ]
-then
-echo "SonATA successfully found"
-else
-echo "SonATA not found"
-echo "If you want to contribute you should open a github account and use the" 
-echo "            standard GitHub fork/pull mechanism"				
-sleep 1
-echo " For more information visit http://setiquest.org/wiki/index.php/GitHub"
-echo "       and http://setiquest.org/content/sonata-download               "
-sleep 1
-echo "Do you want to continue building by downloading the SonATA without Github fork/pull (y/n)"
-   while true; do
-   read choice
-   case $choice in
-      [Nn]* ) echo  "Aborting the build"
-	      exit 1;;
-      [Yy]* ) echo  "Downloading the SonATA"
-              cd $HOME
-              git clone git://github.com/khrm/SonATA.git
-              cd SonATA
-              git checkout -t -b gsoc remotes/origin/gsoc
-              break;;
-          * ) echo "Only y or n accepted";;   
-          esac
-          done
-fi 
-sleep 3
 
 ####################################################################################
 #                Preparing the files       		                           #
@@ -245,7 +246,8 @@ echo "Resource the environment using assumption that you are using bash?(y/n)"
               echo  '  ACE_ROOT=$HOME/SonATA/packages/ACE_wrappers
                        PACKAGES_PATH=$HOME/SonATA/packages
                        export LD_LIBRARY_PATH=$ACE_ROOT/ace:$ACE_ROOT/lib:$PACKAGES_PATH/lib:$LD_LIBRARY_PATH
-                       export PATH=.:$HOME/sonata_install/bin:$PACKAGES_PATH/bin:$PATH\
+                       export PATH=.:$HOME/sonata_install/bin:$PACKAGES_PATH/bin:$PATH
+                       export _POSIX2_VERSION=199209
                        ulimit -s unlimited'
                        break;;
       [Yy]* ) echo  "Resourcing the enviroment by changing .bashrc"
@@ -255,6 +257,7 @@ ACE_ROOT=$HOME/SonATA/packages/ACE_wrappers\
 PACKAGES_PATH=$HOME/SonATA/packages\
 export LD_LIBRARY_PATH=$ACE_ROOT/ace:$ACE_ROOT/lib:$PACKAGES_PATH/lib:$LD_LIBRARY_PATH\
 export PATH=.:$HOME/sonata_install/bin:$PACKAGES_PATH/bin:$PATH\
+export _POSIX2_VERSION=199209\
 ulimit -s unlimited' ~/.bashrc
                        break;;
           * ) echo "Only y or n are accepted";;   
