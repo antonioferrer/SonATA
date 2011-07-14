@@ -56,7 +56,7 @@ AC_ARG_WITH(
 
 AC_MSG_CHECKING([which tclConfig.sh to use])
 TCL_LIB_DIR=""
-for dir in $tcl_search /usr/lib /usr/local/lib $exec_prefix/lib /usr/local/lib/unix /opt/tcl/lib; do
+for dir in $tcl_search /usr/lib /usr/lib64 /usr/lib64/tcl /usr/local/lib $exec_prefix/lib /usr/local/lib/unix /opt/tcl/lib; do
     if test -r $dir/tclConfig.sh; then
         TCL_LIB_DIR=$dir
         break
