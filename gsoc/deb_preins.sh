@@ -57,6 +57,7 @@ echo "##########################################################################
 sleep 5
 sudo su - -c 'gedit '/etc/apt/sources.list''
 sudo apt-get update
+sudo apt-get install gdebi wget
 wget https://raw.github.com/khrm/SonATA/gsoc/gsoc/sonata-build-meta.deb
 echo 'y' | sudo gdebi sonata-build-meta.deb
 rm sonata-build-meta.deb
