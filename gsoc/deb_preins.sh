@@ -60,9 +60,9 @@ read -s -n 1 -p "Press any key to continue after editing the file. . ."
 sudo apt-get update
 sudo apt-get install gdebi wget
 wget https://raw.github.com/khrm/SonATA/gsoc/gsoc/sonata-build-meta.deb
-sudo gdebi --n sonata-build-meta.deb
+sudo gdebi sonata-build-meta.deb
 rm sonata-build-meta.deb
-sleep 3
+sleep 3 && echo
 
 ####################################################################################
 #                Configuring the java                                              #
@@ -70,7 +70,7 @@ sleep 3
 echo "Configure the Java to use Sun Java version"
 sudo su -c 'update-alternatives --config javac'
 sudo su -c 'update-alternatives --config java'
-sleep 3
+sleep 3 && echo
 
 ####################################################################################
 #                            Checking for SonATA                                   #
