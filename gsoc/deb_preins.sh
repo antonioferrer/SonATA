@@ -56,10 +56,11 @@ echo "#Opening the /etc/apt/sources.list file to edit it. Add the above reposito
 echo "##############################################################################################################"
 sleep 5
 sudo su - -c 'gedit '/etc/apt/sources.list''
+read -s -n 1 -p "Press any key to continue after editing the file. . ."
 sudo apt-get update
 sudo apt-get install gdebi wget
 wget https://raw.github.com/khrm/SonATA/gsoc/gsoc/sonata-build-meta.deb
-echo 'y' | sudo gdebi sonata-build-meta.deb
+sudo gdebi --n sonata-build-meta.deb
 rm sonata-build-meta.deb
 sleep 3
 
