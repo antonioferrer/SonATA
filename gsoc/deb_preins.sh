@@ -1,7 +1,7 @@
 #!/bin/bash
 ####################################################################################
 #
-# File   : sonata_i.sh
+# File   : deb_preins.sh
 # Project: SonATA
 # Authors: The SonATA code is the result of many programmers
 #          over many years
@@ -38,36 +38,32 @@ clear
 #               Installing the dependencies for SonATA                             #
 ####################################################################################
 echo "#Installing the dependencies for SonATA#"
-echo " #You should have the following repositories in /etc/apt/sources.list#"
-echo "deb http://security.debian.org/ squeeze/updates main
+echo "#Creating a backup of /etc/apt/sources.list#"
+echo "######as we will create a new file##########"
+echo "#######for the duration of script.##########"
+sudo cp /etc/apt/sources.list /etc/apt/sources.list-sonbackup
+sudo sh -c 'cat >  /etc/apt/sources.list <<EOD
+deb http://ftp.debian.org/debian/ squeeze main
+deb http://security.debian.org/ squeeze/updates main
 deb http://ftp.debian.org/debian/ squeeze main non-free contrib
-deb http://security.debian.org/debian-security squeeze/updates main
 deb http://security.debian.org/ squeeze/updates main non-free contrib
-# squeeze-updates, previously known as 'volatile'
-# A network mirror was not selected during install.  The following entries
-# are provided as examples, but you should amend them as appropriate
-# for your mirror of choice.
-#
 deb http://ftp.debian.org/debian/ squeeze-updates main
-deb-src http://ftp.debian.org/debian/ squeeze-updates main"
-echo && echo && echo && echo && echo && echo
-echo "##############################################################################################################"
-echo "#Opening the /etc/apt/sources.list file to edit it. Add the above repositories and close the file to continue#"
-echo "##############################################################################################################"
-sleep 5
-sudo su - -c 'gedit '/etc/apt/sources.list''
-read -s -n 1 -p "Press any key to continue after editing the file. . ."
-sudo apt-get update
+deb-src http://ftp.debian.org/debian/ squeeze-updates main
+EOD'
+sudo sh -c 'apt-get update'
 sudo apt-get install gdebi wget
 wget https://raw.github.com/khrm/SonATA/gsoc/gsoc/sonata-build-meta.deb
 sudo gdebi sonata-build-meta.deb
 rm sonata-build-meta.deb
+sudo cp /etc/apt/sources.list-sonbackup /etc/apt/sources.list
 sleep 3 && echo
 
 ####################################################################################
 #                Configuring the java                                              #
 ####################################################################################
-echo "Configure the Java to use Sun Java version"
+echo "############################################"
+echo "#Configure the Java to use Sun Java version#"
+echo "############################################"
 sudo su -c 'update-alternatives --config javac'
 sudo su -c 'update-alternatives --config java'
 sleep 3 && echo
@@ -173,8 +169,6 @@ ulimit -s unlimited' ~/.bashrc
 ####################################################################################
 mkdir -p ~/sonata_install
 mkdir -p ~/sonata_install/bin
-touch ~/sonata_install/bin/test_sonata
-rm ~/sonata_install/bin/test_sonata
 cat >  ~/sonata_install/bin/test_sonata <<EOD
 #!/bin/tcsh
 cd ~/sonata_install/scripts
