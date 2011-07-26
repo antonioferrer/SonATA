@@ -133,15 +133,14 @@ sleep 3
 #                Preparing the files       		                           #
 ####################################################################################
 echo "Preparing the files"
-sed -i 's@ACE_ROOT="$ACE_ROOT"@ACE_ROOT="'$HOME'/SonATA/packages/ACE_wrappers"@g'    ~/SonATA/sse-pkg/configure.ac
 sed -i 's@lappend ::auto_path /usr/local/lib@lappend ::auto_path '$HOME'/sonata_install/lib@g' ~/SonATA/scripts/sserc.tcl
 echo "Resource the environment using assumption that you are using bash?(y/n)"
    while true; do
    read choice
    case $choice in
       [Nn]* ) echo  "Your shell should have these variable if you are using bash or equvialent other shell"
-              echo  '  ACE_ROOT=$HOME/SonATA/packages/ACE_wrappers
-                       PACKAGES_PATH=$HOME/SonATA/packages
+              echo  '  export ACE_ROOT=$HOME/SonATA/packages/ACE_wrappers
+                       export PACKAGES_PATH=$HOME/SonATA/packages
                        export LD_LIBRARY_PATH=$ACE_ROOT/ace:$ACE_ROOT/lib:$PACKAGES_PATH/lib:$LD_LIBRARY_PATH
                        export PATH=.:$HOME/sonata_install/bin:$PACKAGES_PATH/bin:$PATH
                        export _POSIX2_VERSION=199209
@@ -150,8 +149,8 @@ echo "Resource the environment using assumption that you are using bash?(y/n)"
       [Yy]* ) echo  "Resourcing the enviroment by changing .bashrc"
               sed -i '
 $ a\
-ACE_ROOT=$HOME/SonATA/packages/ACE_wrappers\
-PACKAGES_PATH=$HOME/SonATA/packages\
+export ACE_ROOT=$HOME/SonATA/packages/ACE_wrappers\
+export PACKAGES_PATH=$HOME/SonATA/packages\
 export LD_LIBRARY_PATH=$ACE_ROOT/ace:$ACE_ROOT/lib:$PACKAGES_PATH/lib:$LD_LIBRARY_PATH\
 export PATH=.:$HOME/sonata_install/bin:$PACKAGES_PATH/bin:$PATH\
 export _POSIX2_VERSION=199209\
