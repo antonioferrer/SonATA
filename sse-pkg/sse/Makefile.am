@@ -124,7 +124,7 @@ SSE_LIBS = \
 # Note: -lz (zlib compression library) is needed for
 # some builds of the mysqlclient_r library
 
-LDFLAGS = -R$(ACE_ROOT)/ace -R$(MYSQL_ROOT)/lib
+LDFLAGS = @LDFLAGS@ -R$(ACE_ROOT)/ace -R$(MYSQL_ROOT)/lib 
 LDADD = $(SSE_LIBS)
 
 NssParameterstcl_wrap.cpp: NssParameterstcl.i NssParameters.i tclsh.i

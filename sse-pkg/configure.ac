@@ -87,7 +87,7 @@ AC_CHECK_TYPES([int32_t, uint32_t, int8_t, uint8_t])
 ACX_PTHREAD()
 LIBS="$PTHREAD_LIBS $LIBS"
 CFLAGS="$CFLAGS $PTHREAD_CFLAGS"
-CXXFLAGS="$CXXFLAGS $PTHREAD_CFLAGS -Wall -Woverloaded-virtual -fno-default-inline"
+CXXFLAGS="$CXXFLAGS $PTHREAD_CFLAGS -Wall -Woverloaded-virtual -fno-default-inline -fpermissive"
 CC="$PTHREAD_CC"
 
 # Define CPPUNIT_ROOT for the Makefiles.
@@ -102,7 +102,7 @@ AX_EXT_HAVE_LIB(/lib /lib64 /usr/lib /usr/lib64 /usr/local/lib /usr/local/lib64 
 AX_EXT_HAVE_LIB(/lib /lib64 /usr/lib /usr/lib64 /usr/local/lib /usr/local/lib64, fftw3f,main)
 AX_EXT_HAVE_LIB(/lib /lib64 /usr/lib /usr/lib64 /usr/local/lib /usr/local/lib64, mpfr,main)
 AX_EXT_HAVE_LIB(/lib /lib64 /usr/lib /usr/lib64 /usr/local/lib /usr/local/lib64, gmp,main)
-
+AX_EXT_HAVE_LIB($ACE_ROOT/ace /lib /lib64 /usr/lib /usr/lib64 /usr/local/lib /usr/local/lib64, ACE, main) 
 
 AC_FUNC_ALLOCA
 dnl AC_CHECK_LIB(pthread,pthread_cond_timedwait)

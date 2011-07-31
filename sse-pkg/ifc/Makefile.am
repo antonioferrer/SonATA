@@ -30,8 +30,8 @@
 
 ## Process this file with automake to produce Makefile.in
 
-LDFLAGS = @GPIB_LDFLAGS@
-LIBADD = @GPIB_LIBADD@
+LDFLAGS = @LDFLAGS@ @GPIB_LDFLAGS@
+LIBADD = @LIBADD@ @GPIB_LIBADD@
 AUTOMAKE_OPTIONS = foreign
 srcdir=.
 bin_SCRIPTS = \
