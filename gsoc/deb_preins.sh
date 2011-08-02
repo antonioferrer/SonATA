@@ -181,7 +181,7 @@ chmod +x  ~/sonata_install/bin/test_sonata
 #                Creating a ssh key and configuring it                             #
 ####################################################################################
 echo "Starting the ssh daemon"
-sudo /etc/init.d/sshd start
+sudo /etc/init.d/ssh start
 cd ~/.ssh 2>/dev/null || (mkdir ~/.ssh && chmod 700 ~/.ssh) && cd ~/.ssh
 echo "Creating the ssh key"
 ssh-keygen -f id_rsa -t rsa -q
