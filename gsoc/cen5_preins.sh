@@ -97,7 +97,7 @@ wget ftp://ftp.gnu.org/gnu/gmp/gmp-4.3.2.tar.gz
 gzip -d gmp-4.3.2.tar.gz
 tar -xvf gmp-4.3.2.tar
 cd gmp-4.3.2/
-./configure --prefix=/usr/local
+./configure --prefix=/usr/
 make
 sudo make install
 rm -rf $BUILD_DIR/build/*
@@ -109,7 +109,7 @@ wget http://ftp.gnu.org/gnu/mpfr/mpfr-2.4.2.tar.gz
 gzip -d mpfr-2.4.2.tar.gz
 tar -xvf mpfr-2.4.2.tar
 cd mpfr-2.4.2
-./configure --prefix=/usr/local
+./configure --prefix=/usr/
 make
 sudo make install
 rm -rf $BUILD_DIR/build/*
@@ -122,12 +122,14 @@ gunzip fftw-3.2.1.tar.gz
 tar -xvf fftw-3.2.1.tar
 cd fftw-3.2.1
 cd $BUILD_DIR/build
-$BUILD_DIR/downloads/fftw-3.2.1/configure --prefix=/usr/local --enable-threads --enable-float --enable-sse --disable-fortran
+$BUILD_DIR/downloads/fftw-3.2.1/configure --prefix=/usr/ --enable-threads --enable-float --enable-sse --disable-fortran
 make
 make check
 sudo make install
 rm -rf $BUILD_DIR/build/*
 rm -rf $BUILD_DIR/downloads/*
+sudo /sbin/ldconfig
+
 ####################################################################################
 #               Installing and Configuring the java                                #
 ####################################################################################
@@ -201,7 +203,7 @@ rm -fr $PACKAGES_FILE
 mv $PACKAGES_VERSION $PACKAGES_DIR
 PACKAGES_PATH=`pwd`/$PACKAGES_DIR
 cd ~/SonATA/packages
-rm ACE_wrappers
+rm -R ACE_wrappers
 wget http://download.dre.vanderbilt.edu/previous_versions/ACE-5.7.8.zip
 unzip ACE-5.7.8.zip
 cd ACE_wrappers
