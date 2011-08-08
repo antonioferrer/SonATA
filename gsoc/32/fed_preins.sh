@@ -47,12 +47,12 @@ echo "Download the java(y/n)?"
    case $choice in
          [Yy]* ) echo "Installing and Configuring the java";
                  cd /tmp
-                 wget -O jdk-6u26-linux-x64-rpm.bin http://download.oracle.com/otn-pub/java/jdk/6u26-b03/jdk-6u26-linux-x64-rpm.bin
-                 chmod a+x jdk-6u26-linux-x64-rpm.bin
-                 sudo su -c ./jdk-6u26-linux-x64-rpm.bin
-                 sudo su -c '/usr/sbin/alternatives --install /usr/bin/java java /usr/java/jdk1.6.0_26/jre/bin/java 20000'
-                 sudo su -c '/usr/sbin/alternatives --install /usr/bin/javac javac /usr/java/jdk1.6.0_26/bin/javac 20000'
-                 sudo su -c '/usr/sbin/alternatives --install /usr/bin/jar jar /usr/java/jdk1.6.0_26/bin/jar 20000'
+                 wget -O jdk-7-linux-i586.rpm http://download.oracle.com/otn-pub/java/jdk/7/jdk-7-linux-i586.rpm
+                 chmod a+x jdk-7-linux-i586.rpm
+                 sudo su -c ./jdk-7-linux-i586.rpm
+                 sudo su -c '/usr/sbin/alternatives --install /usr/bin/java java /usr/java/jdk1.7.0/jre/bin/java 20000'
+                 sudo su -c '/usr/sbin/alternatives --install /usr/bin/javac javac /usr/java/jdk1.7.0/bin/javac 20000'
+                 sudo su -c '/usr/sbin/alternatives --install /usr/bin/jar jar /usr/java/jdk1.7.0/bin/jar 20000'
                  break;;
          [Nn]* ) echo "Ensure that Sun-Java is available during runtime";break;;
          * ) echo "Please answer y or n.";;
