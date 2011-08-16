@@ -48,7 +48,7 @@ echo "Download the java(y/n)?"
          [Yy]* ) echo "Installing and Configuring the java";
                  cd /tmp
                  wget -O jdk-7-linux-x64.rpm http://download.oracle.com/otn-pub/java/jdk/7/jdk-7-linux-x64.rpm
-                 su -c 'rpm -i jdk-7-linux-i586.rpm'
+                 sudo su -c 'rpm -i jdk-7-linux-x64.rpm'
                  sudo su -c '/usr/sbin/alternatives --install /usr/bin/java java /usr/java/jdk1.7.0/jre/bin/java 20000'
                  sudo su -c '/usr/sbin/alternatives --install /usr/bin/javac javac /usr/java/jdk1.7.0/bin/javac 20000'
                  sudo su -c '/usr/sbin/alternatives --install /usr/bin/jar jar /usr/java/jdk1.7.0/bin/jar 20000'
