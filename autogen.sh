@@ -29,6 +29,13 @@
 #
 ################################################################################
 
+#The next three line enables autogen to run from any directory.#
+
+pathautogen="$(cd "${0%/*}" 2>/dev/null; echo "$PWD"/"${0##*/}")"
+curpath=`dirname "$pathautogen"`
+cd $curpath
+
+
 echo "Checking whether the system fulfils the minimum requirements"
 sleep 1    
 quo=`awk 'match($1,"MemTotal") == 1 {print $2}' /proc/meminfo`

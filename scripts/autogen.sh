@@ -1,7 +1,7 @@
 #!/bin/sh
 ################################################################################
 #
-# File:    reconfig
+# File:    autogen.sh
 # Project: OpenSonATA
 # Authors: The OpenSonATA code is the result of many programmers
 #          over many years

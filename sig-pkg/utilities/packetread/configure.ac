@@ -1,6 +1,6 @@
 ################################################################################
 #
-# File:    configure.in
+# File:    configure.ac
 # Project: OpenSonATA
 # Authors: The OpenSonATA code is the result of many programmers
 #          over many years
