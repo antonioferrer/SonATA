@@ -38,10 +38,7 @@ clear
 #               Installing the dependencies for SonATA                             #
 ####################################################################################
 echo "#Installing the dependencies for SonATA#"
-echo "#Creating a backup of /etc/apt/sources.list#"
-echo "######as we will create a new file##########"
-echo "#######for the duration of script.##########"
-
+echo "Please Ensure that you run sudo aptselect natty partner"
 sudo sh -c 'apt-get update'
 sudo apt-get install gdebi wget
 wget https://raw.github.com/khrm/SonATA/gsoc/gsoc/sonata-build-meta.deb
@@ -101,7 +98,7 @@ cd ~/SonATA/
 PACKAGES_VERSION=packages_1.0
 PACKAGES_DIR=packages
 PACKAGES_FILE=$PACKAGES_VERSION.tar.gz
-wget http://dl.dropbox.com/u/37431415/$PACKAGES_FILE
+wget http://setiquest.org/sonata_files/packages_32bit_1.0.tar.gz
 tar zxf $PACKAGES_FILE
 rm -fr $PACKAGES_FILE
 mv $PACKAGES_VERSION $PACKAGES_DIR
@@ -152,7 +149,7 @@ ulimit -s unlimited' ~/.bashrc
           * ) echo "Only y or n are accepted";;   
           esac
           done 
-
+export ACE_ROOT=$HOME/SonATA/packages/ACE_wrappers
 
 ####################################################################################
 #                Creating the script for testing SonATA                            #

@@ -262,6 +262,7 @@ ulimit -s unlimited' ~/.bashrc
           * ) echo "Only y or n are accepted";;   
           esac
           done 
+export ACE_ROOT=$HOME/SonATA/packages/ACE_wrappers
 
 ####################################################################################
 #                Creating the script for testing SonATA                            #
