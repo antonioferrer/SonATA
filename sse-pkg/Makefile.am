@@ -71,8 +71,8 @@ SUBDIRS = \
 
 endif
 
-noinst_SCRIPTS = reconfig
-EXTRA_DIST = reconfig
+noinst_SCRIPTS = autogen.sh
+EXTRA_DIST = autogen.sh
 
 
 # Force the creation of the setup directory

@@ -21,8 +21,8 @@ SUBDIRS = \
 localinstall:
 	make install prefix=`pwd`/scripts
 
-noinst_SCRIPTS = reconfig
-EXTRA_DIST = reconfig
+noinst_SCRIPTS = autogen.sh
+EXTRA_DIST = autogen.sh
 
 # Force creation of the scripts directory
 scriptsdir = $(prefix)/scripts/
