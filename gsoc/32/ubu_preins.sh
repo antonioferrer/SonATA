@@ -38,7 +38,8 @@ clear
 #               Installing the dependencies for SonATA                             #
 ####################################################################################
 echo "#Installing the dependencies for SonATA#"
-echo "Please Ensure that you run sudo aptselect natty partner"
+echo 'Please Ensure that you have run sudo add-apt-repository "deb http://archive.canonical.com/natty partner"'
+read pause
 sudo sh -c 'apt-get update'
 sudo apt-get install gdebi wget
 wget https://raw.github.com/khrm/SonATA/gsoc/gsoc/sonata-build-meta.deb

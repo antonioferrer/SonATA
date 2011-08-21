@@ -38,10 +38,8 @@ clear
 #               Installing the dependencies for SonATA                             #
 ####################################################################################
 echo "#Installing the dependencies for SonATA#"
-echo "#Creating a backup of /etc/apt/sources.list#"
-echo "######as we will create a new file##########"
-echo "#######for the duration of script.##########"
-
+echo 'Please Ensure that you have run sudo add-apt-repository "deb http://archive.canonical.com/natty partner"'
+read pause
 sudo sh -c 'apt-get update'
 sudo apt-get install gdebi wget
 wget https://raw.github.com/khrm/SonATA/gsoc/gsoc/sonata-build-meta.deb
