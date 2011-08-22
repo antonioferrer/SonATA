@@ -31,7 +31,7 @@ AC_INIT(SonATA-sse, 1.0)
 AC_CONFIG_SRCDIR([include/sseInterface.h])
 AC_CONFIG_HEADERS([config.h])
 AC_PREFIX_DEFAULT($HOME/sonata_install)
-AC_PREREQ([2.57])dnl               dnl Minimum Autoconf version required.
+AC_PREREQ([2.63])dnl               dnl Minimum Autoconf version required.
 AC_ARG_PROGRAM
 AM_MAINTAINER_MODE
 AM_INIT_AUTOMAKE([foreign])
