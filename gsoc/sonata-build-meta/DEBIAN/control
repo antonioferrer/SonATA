@@ -1,9 +1,0 @@
-Package:sonata-build-meta
-Version:1.0
-Section: main
-Priority: optional
-Architecture: all
-Depends: libgmp3-dev, libmpfr-dev, tcl-dev, libmysqlclient-dev, libmysql++-dev, libfftw3-dev, libfftw3-3, libreadline-dev, expect-dev, swig, tk-dev, syslinux, doxygen, gcc, g++, make, libtool, automake, autoconf, sun-java6-jdk, git, libncurses5, libncurses5-dev, xterm, tcsh, gawk, bc, ssh
-Installed-Size:
-Maintainer: Khurram Baig
-Description: A metapackage for SonATA to pull in all require dependencies needed for installation.
