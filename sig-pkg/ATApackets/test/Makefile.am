@@ -49,12 +49,12 @@ EXTRA_DIST =
 BUILT_SOURCES =
 
 PKT_DIR = $(builddir)/../src
-PKT_INCDIR = $(builddir)/../include
+PKT_INCDIR = $(srcdir)/../include
 PKT_LIBDIR = $(PKT_DIR)
 PKT_LIB = $(PKT_LIBDIR)/libPkt.a
 
 SUP_DIR = $(builddir)/../src
-SUP_INCDIR = $(builddir)/../include
+SUP_INCDIR = $(srcdir)/../include
 SUP_LIBDIR = $(SUP_DIR)
 SUP_LIB = $(SUP_LIBDIR)/libSup.a
 
