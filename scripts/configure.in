@@ -28,13 +28,14 @@
 #
 ################################################################################
 
-AC_INIT(Makefile.am)
+AC_INIT(scripts,0.1)
 AM_CONFIG_HEADER(config.h)
 AC_PREFIX_DEFAULT($HOME/sonata_install)
 #AC_PREREQ(2.10)dnl               dnl Minimum Autoconf version required.
 AC_ARG_PROGRAM
 AM_MAINTAINER_MODE
-AM_INIT_AUTOMAKE(scripts, 0.1)
+AM_INIT_AUTOMAKE([foreign])
+m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES])
 
 dnl Checks for programs.
 AC_PROG_INSTALL

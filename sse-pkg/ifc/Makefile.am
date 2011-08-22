@@ -30,10 +30,10 @@
 
 ## Process this file with automake to produce Makefile.in
 
-LDFLAGS = @GPIB_LDFLAGS@
-LIBADD = @GPIB_LIBADD@
+LDFLAGS = @LDFLAGS@ @GPIB_LDFLAGS@
+LIBADD = @LIBADD@ @GPIB_LIBADD@
 AUTOMAKE_OPTIONS = foreign
-
+srcdir=.
 bin_SCRIPTS = \
         ifc
 
@@ -47,8 +47,9 @@ LIB_DEPENDS = $(SSE_INTERFACE_LIB) $(GPIB_INTERFACE_LIB) \
 	$(SSEUTIL_LIB)
 
 INCLUDES= -I$(SSE_INC_DIR) -I$(SSE_INTERFACE_INC_DIR) \
-        -I$(SSEUTIL_INC_DIR) \
-	-I$(GPIB_INTERFACE_INC_DIR) @GPIB_INCLUDES@  
+           -I$(SSEUTIL_INC_DIR) \
+	-I$(GPIB_INTERFACE_INC_DIR) @GPIB_INCLUDES@  \
+        -I$(TCL_INCLUDE_DIR)      -I@srcdir@ 
 
 # build a version of tclsh that has all the libraries
 # needed to run the test signal generator equipment
@@ -73,7 +74,7 @@ ifctclsh_DEPENDENCIES = $(LIB_DEPENDS)
 ifctclsh_LDADD = $(ifctclsh_LIBS)
 
 Ifc_wrap.cpp: Ifc.i
-	swig -c++ -tcl -o Ifc_wrap.cpp -ltclsh.i Ifc.i
+	swig -c++ -tcl -o Ifc_wrap.cpp -ltclsh.i @srcdir@/Ifc.i
 
 CLEANFILES = Ifc_wrap.cpp
 

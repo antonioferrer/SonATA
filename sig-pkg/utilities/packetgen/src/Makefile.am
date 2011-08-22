@@ -32,8 +32,6 @@
 
 ## Process this file with automake to produce Makefile.in
 
-top_srcdir = ..
-top_builddir = ..
 
 AUTOMAKE_OPTIONS = foreign
 
@@ -45,37 +43,37 @@ EXTRA_DIST =
 
 BUILT_SOURCES =
 
-SIGPROC_DIR = $(top_srcdir)/../..
+SIGPROC_DIR = $(srcdir)/../../..
 SIGPROC_INCDIR = $(SIGPROC_DIR)/include
 
-SSE_INCDIR = $(top_srcdir)/../../../sse-pkg/include
+SSE_INCDIR = $(srcdir)/../../../../sse-pkg/include
 
-SSE_INTERFACE_DIR = $(top_builddir)/../../../sse-pkg/sseInterfaceLib
-SSE_INTERFACE_INCDIR = $(top_srcdir)/../../../sse-pkg/sseInterfaceLib
+SSE_INTERFACE_DIR = $(builddir)/../../../../sse-pkg/sseInterfaceLib
+SSE_INTERFACE_INCDIR = $(srcdir)/../../../../sse-pkg/sseInterfaceLib
 SSE_INTERFACE_LIBDIR = $(SSE_INTERFACE_DIR)
 SSE_INTERFACE_LIB = $(SSE_INTERFACE_DIR)/libsseInterface.a
 
-SSE_DX_INTERFACE_DIR = $(top_builddir)/../../../sse-pkg/sseDxInterfaceLib
-SSE_DX_INTERFACE_INCDIR = $(top_srcdir)/../../../sse-pkg/sseDxInterfaceLib
+SSE_DX_INTERFACE_DIR = $(builddir)/../../../../sse-pkg/sseDxInterfaceLib
+SSE_DX_INTERFACE_INCDIR = $(srcdir)/../../../../sse-pkg/sseDxInterfaceLib
 SSE_DX_INTERFACE_LIBDIR = $(SSE_DX_INTERFACE_DIR)
 SSE_DX_INTERFACE_LIB = $(SSE_DX_INTERFACE_LIBDIR)/libsseDxInterface.a
 
 # the following are packet headers
-PKT_HDR_DIR = $(top_srcdir)/../../ATApackets
+PKT_HDR_DIR = $(srcdir)/../../../ATApackets
 PKT_HDR_INCDIR = $(PKT_HDR_DIR)/include
-PKT_HDR_LIBDIR = $(PKT_HDR_DIR)/src
+PKT_HDR_LIBDIR = $(builddir)/../../../ATApackets/src
 PKT_LIB = $(PKT_HDR_LIBDIR)/libPkt.a
 
 # SonATA library directories
-SONATA_DIR = $(top_srcdir)/../../sonataLib
+SONATA_DIR = $(srcdir)/../../../sonataLib
 SONATA_INCDIR = $(SONATA_DIR)/include
-SONATA_LIBDIR = $(SONATA_DIR)/src
+SONATA_LIBDIR = $(builddir)/../../../sonataLib/src
 SONATA_LIB = $(SONATA_LIBDIR)/libSonata.a
 
 # Gaussian library directories
-GAUSS_DIR = $(top_srcdir)/../../gaussLib
+GAUSS_DIR = $(srcdir)/../../../gaussLib
 GAUSS_INCDIR = $(GAUSS_DIR)/include
-GAUSS_LIBDIR = $(GAUSS_DIR)/src
+GAUSS_LIBDIR = $(builddir)/../../../gaussLib/src
 GAUSS_LIB = $(GAUSS_LIBDIR)/libGauss.a
 
 LIB_DEPENDS = $(PKT_LIB) $(SONATA_LIB) $(GAUSS_LIB) \
@@ -83,14 +81,14 @@ LIB_DEPENDS = $(PKT_LIB) $(SONATA_LIB) $(GAUSS_LIB) \
 
 packetgen_DEPENDENCIES = $(LIB_DEPENDS)
 
-PACKETGEN_INCLUDE = $(top_srcdir)/include
+PACKETGEN_INCLUDE = $(srcdir)/../include
 
 INCLUDES= -I$(PACKETGEN_INCLUDE) -I$(PKT_HDR_INCDIR) -I$(GAUSS_INCDIR) \
 	-I$(SONATA_INCDIR) -I$(SIGPROC_INCDIR) \
 	-I$(SSE_INCDIR) -I$(SSE_INTERFACE_INCDIR) \
-	-I$(SSE_DX_INTERFACE_INCDIR) -I$(top_srcdir)/include \
+	-I$(SSE_DX_INTERFACE_INCDIR) -I$(srcdir)/../include \
 	-I/usr/include/tcl8.3 -I/usr/include/tcl8.2 \
-	-I$(top_srcdir)/lib
+	-I$(srcdir)/../lib
 
 PACKETGEN_LIBS = \
   -lpthread -lnsl \

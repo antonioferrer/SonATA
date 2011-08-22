@@ -38,6 +38,8 @@
 # --dxlibsonly : build only the dx libraries
 # --installdir <dir> :  configure <dir> as the installation directory
 
+
+
 defaultInstallDir="${HOME}/sonata_install"
 installDir=${defaultInstallDir}
 options=""

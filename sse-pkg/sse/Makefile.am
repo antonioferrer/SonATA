@@ -99,7 +99,8 @@ INCLUDES= \
 	 -I$(CPPUNIT_ROOT)/include -I$(top_srcdir)/include \
 	 -I$(DOPPLER_INC_DIR) \
          -I$(MYSQL_ROOT)/include \
-	 -I/usr/include/mysql
+	 -I/usr/include/mysql \
+         -I$(TCL_INCLUDE_DIR)
 
 SSE_LIBS = \
   $(SSECOMMUTIL_LIB) \
@@ -123,7 +124,7 @@ SSE_LIBS = \
 # Note: -lz (zlib compression library) is needed for
 # some builds of the mysqlclient_r library
 
-LDFLAGS = -R$(ACE_ROOT)/ace -R$(MYSQL_ROOT)/lib
+LDFLAGS = @LDFLAGS@ -R$(ACE_ROOT)/ace -R$(MYSQL_ROOT)/lib 
 LDADD = $(SSE_LIBS)
 
 NssParameterstcl_wrap.cpp: NssParameterstcl.i NssParameters.i tclsh.i

@@ -35,6 +35,9 @@
 # usage:
 #	./reconfig [--installdir <dir>]
 #	--installdir <dir>: configure <dir> as the installation directory
+#!/bin/sh 
+
+###################################################################################
 
 defaultInstallDir="${HOME}/sonata_install"
 installDir=${defaultInstallDir}

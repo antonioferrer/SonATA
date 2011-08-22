@@ -32,8 +32,6 @@
 
 ## Process this file with automake to produce Makefile.in
 
-top_srcdir = ..
-top_builddir = ..
 
 AUTOMAKE_OPTIONS = foreign
 
@@ -45,24 +43,24 @@ EXTRA_DIST =
 
 BUILT_SOURCES =
 
-PACKETSQIMPORT_LIB_DIR = $(top_srcdir)/lib
+PACKETSQIMPORT_LIB_DIR = $(builddir)/../lib
 PACKETSQIMPORT_LIB = $(PACKETSQIMPORT_LIB_DIR)/libDx.a
 
-SIGPROC_DIR = $(top_srcdir)/../..
+SIGPROC_DIR = $(srcdir)/../../..
 SIGPROC_INCDIR = $(SIGPROC_DIR)/include
 
-SSE_INCDIR = $(top_srcdir)/../../../sse-pkg/include
+SSE_INCDIR = $(srcdir)/../../../../sse-pkg/include
 
-SSE_INTERFACE_DIR = $(top_builddir)/../../../sse-pkg/sseInterfaceLib
-SSE_INTERFACE_INCDIR = $(top_srcdir)/../../../sse-pkg/sseInterfaceLib
+SSE_INTERFACE_DIR = $(builddir)/../../../../sse-pkg/sseInterfaceLib
+SSE_INTERFACE_INCDIR = $(srcdir)/../../../../sse-pkg/sseInterfaceLib
 
-SSE_DX_INTERFACE_DIR = $(top_builddir)/../../../sse-pkg//sseDxInterfaceLib
-SSE_DX_INTERFACE_INCDIR = $(top_srcdir)/../../../sse-pkg/sseDxInterfaceLib
+SSE_DX_INTERFACE_DIR = $(builddir)/../../../../sse-pkg//sseDxInterfaceLib
+SSE_DX_INTERFACE_INCDIR = $(srcdir)/../../../../sse-pkg/sseDxInterfaceLib
 
 # the following are packet headers
-PKT_HDR_DIR = $(top_srcdir)/../../ATApackets
+PKT_HDR_DIR = $(srcdir)/../../../ATApackets
 PKT_HDR_INCDIR = $(PKT_HDR_DIR)/include
-PKT_HDR_LIBDIR = $(PKT_HDR_DIR)/src
+PKT_HDR_LIBDIR = $(builddir)/../../../ATApackets/src
 PKT_LIB = $(PKT_HDR_LIBDIR)/libPkt.a
 SUP_LIB = $(PKT_HDR_LIBDIR)/libSup.a
 
@@ -70,11 +68,11 @@ LIB_DEPENDS = $(PKT_LIB) $(SUP_LIB)
 
 packetchan2beam_DEPENDENCIES = $(LIB_DEPENDS)
 
-PACKETSQIMPORT_INCLUDE = $(top_srcdir)/include
+PACKETSQIMPORT_INCLUDE = $(srcdir)/../include
 
 INCLUDES= -I$(PACKETSQIMPORT_INCLUDE) -I$(PKT_HDR_INCDIR) \
-	-I$(top_srcdir)/include \
-	-I$(top_srcdir)/lib
+	-I$(srcdir)/../include \
+	-I$(srcdir)/../lib
 
 PACKETSQIMPORT_LIBS = \
   -lpthread -lnsl \

@@ -32,8 +32,6 @@
 
 ## Process this file with automake to produce Makefile.in
 
-top_srcdir = ..
-top_builddir = ..
 
 AUTOMAKE_OPTIONS = foreign
 
@@ -41,13 +39,13 @@ noinst_LIBRARIES =	libGauss.a
 
 PUBLIC_HEADER_FILES =
 
-SIGPROC_DIR = $(top_srcdir)/..
+SIGPROC_DIR = $(srcdir)/../..
 SIGPROC_INCDIR = $(SIGPROC_DIR)/include
 
-SONATA_DIR = $(top_srcdir)/../sonataLib
+SONATA_DIR = $(srcdir)/../../sonataLib
 SONATA_INCDIR = $(SONATA_DIR)/include
 
-SSE_DX_INTERFACE_INCDIR = $(top_srcdir)/../../sse-pkg/include
+SSE_DX_INTERFACE_INCDIR = $(srcdir)/../../../sse-pkg/include
 
 libGauss_a_SOURCES = \
 		Gaussian.cpp \
@@ -62,7 +60,7 @@ TESTS =
 
 EXTRA_PROGRAMS =
 
-GAUSS_INCLUDE = ../include
+GAUSS_INCLUDE = $(srcdir)/../include
 
 INCLUDES = -I$(GAUSS_INCLUDE) -I$(SONATA_INCDIR) -I$(SIGPROC_INCDIR) \
 		-I$(SSE_DX_INTERFACE_INCDIR)

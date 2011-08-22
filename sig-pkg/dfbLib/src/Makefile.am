@@ -32,8 +32,6 @@
 
 ## Process this file with automake to produce Makefile.in
 
-top_srcdir = ..
-top_builddir = ..
 
 AUTOMAKE_OPTIONS = foreign
 
@@ -55,9 +53,9 @@ TESTS =
 
 EXTRA_PROGRAMS =
 
-DFB_INCLUDE = $(top_srcdir)/include
+DFB_INCLUDE = $(srcdir)/../include
 
-SIGPROC_DIR = $(top_srcdir)/..
+SIGPROC_DIR = $(srcdir)/../..
 SIGPROC_INCDIR = $(SIGPROC_DIR)/include
 
 INCLUDES = -I$(DFB_INCLUDE) -I$(SIGPROC_INCDIR)

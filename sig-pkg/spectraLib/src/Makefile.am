@@ -32,22 +32,19 @@
 
 ## Process this file with automake to produce Makefile.in
 
-top_srcdir = ..
-top_builddir = ..
-
 AUTOMAKE_OPTIONS = foreign
 
 lib_LIBRARIES =	libSpectra.a
 
 PUBLIC_HEADER_FILES =
 
-SIGPROC_DIR = $(top_srcdir)/..
+SIGPROC_DIR = $(srcdir)/../..
 SIGPROC_INCDIR = $(SIGPROC_DIR)/include
 
-SSE_INCDIR = $(top_srcdir)/../../sse-pkg/include
+SSE_INCDIR = $(srcdir)/../../../sse-pkg/include
 
-SSE_INTERFACE_DIR = $(top_builddir)/../../sse-pkg/sseInterfaceLib
-SSE_INTERFACE_INCDIR = $(top_srcdir)/../../sse-pkg/sseInterfaceLib
+SSE_INTERFACE_DIR = $(builddir)/../../../sse-pkg/sseInterfaceLib
+SSE_INTERFACE_INCDIR = $(srcdir)/../../../sse-pkg/sseInterfaceLib
 SSE_INTERFACE_LIB = $(SSE_INTERFACE_DIR)/libsseInterface.a
 
 libSpectra_a_SOURCES = \
@@ -62,7 +59,7 @@ TESTS =
 
 EXTRA_PROGRAMS =
 
-SPECTRA_INCLUDE = ../include
+SPECTRA_INCLUDE = $(srcdir)/../include
 
 INCLUDES = -I$(SPECTRA_INCLUDE) -I$(SIGPROC_INCDIR) -I$(SSE_INCDIR)
 LIBLIST = -L.

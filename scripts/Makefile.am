@@ -21,8 +21,8 @@ SUBDIRS = \
 localinstall:
 	make install prefix=`pwd`/scripts
 
-noinst_SCRIPTS = reconfig
-EXTRA_DIST = reconfig
+noinst_SCRIPTS = autogen.sh
+EXTRA_DIST = autogen.sh
 
 # Force creation of the scripts directory
 scriptsdir = $(prefix)/scripts/
@@ -144,13 +144,13 @@ scripts_SCRIPTS = \
 	vger-demo.tcl \
 	vger-demo-xpol.tcl \
 	sonata-wrapup.tcl \
-	sonata-cron-switch-to-kepler-targets.sh* \
+	$(srcdir)/sonata-cron-switch-to-kepler-targets.sh* \
 	sonata-switch-to-kepler-targets.tcl \
-	sonata-cron-begin-gal-survey-session.sh* \
+	$(srcdir)/sonata-cron-begin-gal-survey-session.sh* \
 	sonata-start-gal-survey-obs.tcl \
-	runpacketrelay-beam1.tcsh* \
-	runpacketrelay-beam2.tcsh* \
-	runpacketrelay-beam3.tcsh* \
+	$(srcdir)/runpacketrelay-beam1.tcsh* \
+	$(srcdir)/runpacketrelay-beam2.tcsh* \
+	$(srcdir)/runpacketrelay-beam3.tcsh* \
 	tscope-setup-2beam-4l-data-collect.tcl \
 	tscope-setup-2beam-4l-1500-1520MHz.tcl \
 	tscope-setup-2beam-data-collect.tcl \

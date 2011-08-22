@@ -30,8 +30,8 @@
 
 ## Process this file with automake to produce Makefile.in
 
-LDFLAGS = @GPIB_LDFLAGS@
-LIBADD = @GPIB_LIBADD@
+LDFLAGS = @LDFLAGS@ @GPIB_LDFLAGS@
+LIBADD = @LIBADD@ @GPIB_LIBADD@
 AUTOMAKE_OPTIONS = foreign
 
 bin_SCRIPTS = \
@@ -48,7 +48,9 @@ LIB_DEPENDS = $(SSE_INTERFACE_LIB) $(GPIB_INTERFACE_LIB) \
 
 INCLUDES= -I$(SSE_INC_DIR) -I$(SSE_INTERFACE_INC_DIR) \
 	-I$(SSEUTIL_INC_DIR) \
-	-I$(GPIB_INTERFACE_INC_DIR) @GPIB_INCLUDES@ 
+	-I$(GPIB_INTERFACE_INC_DIR) @GPIB_INCLUDES@  \
+        -I$(TCL_INCLUDE_DIR)   -I@srcdir@ 
+
 
 # build a version of tclsh that has all the libraries
 # needed to run the test signal generator equipment
@@ -70,7 +72,7 @@ testsigtclsh_DEPENDENCIES = $(LIB_DEPENDS)
 testsigtclsh_LDADD = $(testsigtclsh_LIBS)
 
 TestSig_wrap.cpp: TestSig.i
-	swig -c++ -tcl -o TestSig_wrap.cpp -ltclsh.i TestSig.i
+	swig -c++ -tcl -o TestSig_wrap.cpp -ltclsh.i @srcdir@/TestSig.i
 
 CLEANFILES = TestSig_wrap.cpp
 

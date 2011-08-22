@@ -1,0 +1,18 @@
+#!/bin/sh
+
+echo "libtoolize..."
+libtoolize --force --automake 
+
+echo "aclocal..."
+aclocal
+
+echo "autoheader..."
+autoheader
+
+echo "autoconf..."
+autoconf --force    
+
+echo "automake..."
+automake --add-missing --force-missing  
+
+

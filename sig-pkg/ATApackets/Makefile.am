@@ -44,5 +44,5 @@ localinstall:
 doxygen:
 	doxygen doxygen.config
 
-noinst_SCRIPTS = reconfig
-EXTRA_DIST = reconfig configure.in
+noinst_SCRIPTS = autogen.sh
+EXTRA_DIST = autogen.sh configure.ac

@@ -32,8 +32,7 @@
 
 ## Process this file with automake to produce Makefile.in
 
-top_srcdir = ..
-top_builddir = ..
+
 
 AUTOMAKE_OPTIONS = foreign
 
@@ -49,13 +48,13 @@ EXTRA_DIST =
 
 BUILT_SOURCES =
 
-PKT_DIR = $(top_srcdir)/src
-PKT_INCDIR = $(top_srcdir)/include
+PKT_DIR = $(builddir)/../src
+PKT_INCDIR = $(srcdir)/../include
 PKT_LIBDIR = $(PKT_DIR)
 PKT_LIB = $(PKT_LIBDIR)/libPkt.a
 
-SUP_DIR = $(top_srcdir)/src
-SUP_INCDIR = $(top_srcdir)/include
+SUP_DIR = $(builddir)/../src
+SUP_INCDIR = $(srcdir)/../include
 SUP_LIBDIR = $(SUP_DIR)
 SUP_LIB = $(SUP_LIBDIR)/libSup.a
 
@@ -64,18 +63,16 @@ LIB_DEPENDS = $(PKT_LIB) $(SUP_LIB)
 pktTest_DEPENDENCIES = $(LIB_DEPENDS)
 
 INCLUDES= -I . -I$(PKT_INCDIR) -I$(SUP_INCDIR) \
-	-I$(top_srcdir)/include \
-	-I$(top_srcdir)/lib
+	-I$(srcdir)/../include \
+	-I$(srcdir)/../lib
 
 pktTest_SOURCES = \
 	pktTest.cpp
 
 TEST_LIBS = \
   -lpthread -lnsl \
-  -L$(PKT_LIBDIR) \
-  -lPkt \
-  -L$(SUP_LIBDIR) \
-  -lSup \
+   $(PKT_LIB)\
+   $(SUP_LIB) \
   -lfftw3f
 
 LDADD = $(TEST_LIBS)

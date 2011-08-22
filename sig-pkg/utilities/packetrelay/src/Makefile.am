@@ -32,8 +32,6 @@
 
 ## Process this file with automake to produce Makefile.in
 
-top_srcdir = ..
-top_builddir = ..
 
 AUTOMAKE_OPTIONS = foreign
 
@@ -45,48 +43,48 @@ EXTRA_DIST =
 
 BUILT_SOURCES =
 
-PACKETRELAY_LIB_DIR = $(top_srcdir)/lib
+PACKETRELAY_LIB_DIR = $(builddir)/../lib
 PACKETRELAY_LIB = $(PACKETRELAY_LIB_DIR)/libDx.a
 
-SIGPROC_DIR = $(top_srcdir)/../..
+SIGPROC_DIR = $(srcdir)/../../..
 SIGPROC_INCDIR = $(SIGPROC_DIR)/include
 
-SSE_INCDIR = $(top_srcdir)/../../../sse-pkg/include
+SSE_INCDIR = $(srcdir)/../../../../sse-pkg/include
 
-SSE_INTERFACE_DIR = $(top_builddir)/../../../sse-pkg/sseInterfaceLib
-SSE_INTERFACE_INCDIR = $(top_srcdir)/../../../sse-pkg/sseInterfaceLib
+SSE_INTERFACE_DIR = $(builddir)/../../../../sse-pkg/sseInterfaceLib
+SSE_INTERFACE_INCDIR = $(srcdir)/../../../../sse-pkg/sseInterfaceLib
 
-SSE_DX_INTERFACE_DIR = $(top_builddir)/../../../sse-pkg//sseDxInterfaceLib
-SSE_DX_INTERFACE_INCDIR = $(top_srcdir)/../../../sse-pkg/sseDxInterfaceLib
+SSE_DX_INTERFACE_DIR = $(builddir)/../../../../sse-pkg//sseDxInterfaceLib
+SSE_DX_INTERFACE_INCDIR = $(srcdir)/../../../../sse-pkg/sseDxInterfaceLib
 
-SSE_UTIL_DIR = $(top_builddir)/../../../sse-pkg/sseutil
-SSE_UTIL_INCDIR = $(top_srcdir)/../../../sse-pkg/sseutil
+SSE_UTIL_DIR = $(builddir)/../../../../sse-pkg/sseutil
+SSE_UTIL_INCDIR = $(srcdir)/../../../../sse-pkg/sseutil
 SSE_UTIL_LIB = $(SSE_UTIL_DIR)/libsseutil.a
 
 # the following are packet headers
-PKT_HDR_DIR = $(top_srcdir)/../../ATApackets
+PKT_HDR_DIR = $(srcdir)/../../../ATApackets
 PKT_HDR_INCDIR = $(PKT_HDR_DIR)/include
-PKT_HDR_LIBDIR = $(PKT_HDR_DIR)/src
+PKT_HDR_LIBDIR = $(builddir)/../../../ATApackets/src
 PKT_LIB = $(PKT_HDR_LIBDIR)/libPkt.a
 
 # SonATA library directories
-SONATA_DIR = $(top_srcdir)/../../sonataLib
+SONATA_DIR = $(srcdir)/../../../sonataLib
 SONATA_INCDIR = $(SONATA_DIR)/include
-SONATA_LIBDIR = $(SONATA_DIR)/src
+SONATA_LIBDIR = $(builddir)/../../../sonataLib/src
 SONATA_LIB = $(SONATA_LIBDIR)/libSonata.a
 
 LIB_DEPENDS = $(PKT_LIB) $(SONATA_LIB)
 
 packetrelay_DEPENDENCIES = $(LIB_DEPENDS)
 
-PACKETRELAY_INCLUDE = $(top_srcdir)/include
+PACKETRELAY_INCLUDE = $(srcdir)/../include
 
 INCLUDES= -I$(PACKETRELAY_INCLUDE) -I$(PKT_HDR_INCDIR) \
 	-I$(SONATA_INCDIR) -I$(SIGPROC_INCDIR) \
 	-I$(SSE_INCDIR) -I$(SSE_DX_INTERFACE_INCDIR) \
-	-I$(top_srcdir)/include
+	-I$(srcdir)/../include
 	-I/usr/include/tcl8.3 -I/usr/include/tcl8.2 \
-	-I$(top_srcdir)/lib
+	-I$(srcdir)/../lib
 
 PACKETRELAY_LIBS = \
   -lpthread -lnsl \
