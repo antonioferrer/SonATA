@@ -47,8 +47,11 @@ Requires:      mysql
 Requires:      mysql-devel
 Requires:      ncurses
 Requires:      ncurses-devel
-Requires:      fftw3
-Requires:      fftw3-devel
+Requires:      fftw-libs-openmp
+Requires:      fftw-libs
+Requires:      fftw
+Requires:      fftw-devel
+Requires:      fftw-libs-threads
 Requires:      readline
 Requires:      readline-devel
 Requires:      expect
@@ -87,6 +90,9 @@ This metapackage package installs all the dependencies needed for the Setiquest 
 
 
 %changelog
+* Tue Feb 21 2012 Khurram Baig (khrm.baig@gmail.com)
+- Removed the redundant dependencies and added new dependencies.
+
 * Mon Jul 11 2011 Khurram Baig (khrm.baig@gmail.com)
 - Added xterm as dependency
 
